@@ -1,4 +1,4 @@
-\documentclass[a4paper]{article}
+\documentclass[a4paper]{report}
 \usepackage[utf8]{inputenc}
 \usepackage[UKenglish]{babel}
 \usepackage[a4paper, total={135mm, 255mm}]{geometry}
@@ -8,14 +8,18 @@
 \usepackage[backend=biber, style=authoryear-icomp]{biblatex}
 \addbibresource{EPQ.bib}
 
-\title{Example title}
-\author{Joshua Dyson}
-\date{\today}
+\title{\Huge{Example title}}
+\author{\Large{Joshua Dyson}}
+\date{\Large{\today}}
 
 \begin{document}
     \maketitle
 
-    \section{Introduction}
+    \subfile{Sections/Abstract}
+
+    \newpage
+
+    \chapter{Introduction}
     \subfile{Sections/Introduction}
 
     \printbibliography

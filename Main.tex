@@ -1,0 +1,21 @@
+\documentclass[a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[UKenglish]{babel}
+
+\usepackage{subfiles}
+
+\usepackage[backend=biber, style=authoryear-icomp]{biblatex}
+\addbibresource{EPQ.bib}
+
+\title{Example title}
+\author{Joshua Dyson}
+\date{\today}
+
+\begin{document}
+    \maketitle
+
+    \section{Introduction}
+    \subfile{Sections/Introduction}
+
+    \printbibliography
+\end{document}

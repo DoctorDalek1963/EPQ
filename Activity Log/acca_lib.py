@@ -32,9 +32,15 @@ class Entry:
 
         self.date_and_time = now.strftime(f'%A {day_of_month} %B %Y, {hour}:%M %p')
 
-    def create_html(self):
+    def create_html(self) -> str:
         """Return a HTML representation of the entry."""
         return f'''<div class="entry">
     <h3>{self.date_and_time}</h3>
     <p>{self.body_text}<p>
 </div>\n'''
+
+    def create_markdown(self) -> str:
+        """Return a HTML representation of the entry."""
+        return f'''### {self.date_and_time}
+
+{self.body_text}\n'''

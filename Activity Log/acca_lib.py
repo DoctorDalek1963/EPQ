@@ -39,7 +39,9 @@ class Entry:
         # markdown.markdown converts markdown formatting into HTML
         return f'''<div class="entry">
     <h3 class="date-and-time">{self.date_and_time}</h3>
-    <p class="body-text">{markdown.markdown(self.body_text)}</p>
+    <p class="body-text">
+        {markdown.markdown(self.body_text)}
+    </p>
 </div>\n'''
 
     def create_markdown(self) -> str:

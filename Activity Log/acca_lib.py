@@ -19,6 +19,7 @@ def ordinal_day(date_time: datetime) -> str:
 
 
 class Entry:
+    """A class where each instance is an entry in the activity log."""
     def __init__(self, body_text: str):
         self.body_text = body_text
 
@@ -30,3 +31,10 @@ class Entry:
         hour = original_hour if original_hour < 12 else original_hour - 12  # Convert to 12 hour
 
         self.date_and_time = now.strftime(f'%A {day_of_month} %B %Y, {hour}:%M %p')
+
+    def create_html(self):
+        """Return a HTML representation of the entry."""
+        return f'''<div class="entry">
+    <h3>{self.date_and_time}</h3>
+    <p>{self.body_text}<p>
+</div>\n'''

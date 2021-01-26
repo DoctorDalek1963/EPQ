@@ -1,5 +1,6 @@
 import os
 from datetime import datetime
+import markdown
 
 
 def ordinal_day(date_time: datetime) -> str:
@@ -35,13 +36,14 @@ class Entry:
 
     def create_html(self) -> str:
         """Return a HTML representation of the entry."""
+        # markdown.markdown converts markdown formatting into HTML
         return f'''<div class="entry">
-    <h3>{self.date_and_time}</h3>
-    <p>{self.body_text}<p>
+    <h3 class="date-and-time">{self.date_and_time}</h3>
+    {markdown.markdown(self.body_text)}
 </div>\n'''
 
     def create_markdown(self) -> str:
-        """Return a HTML representation of the entry."""
+        """Return a markdown representation of the entry."""
         return f'''### {self.date_and_time}
 
 {self.body_text}\n'''

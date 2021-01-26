@@ -47,7 +47,7 @@ class Entry:
 {self.body_text}\n'''
 
 
-def write_entry(entry_text: str, filename='Activity Log'):
+def write_entry(entry_text: str, filename: str = 'Activity Log'):
     """Take an entry body text and an optional filename and write the entry with the current date and time to filename.md and filename.html in the respective formats.
 
 If no filename is specified, 'Activity Log' is used."""

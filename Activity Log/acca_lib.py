@@ -22,7 +22,7 @@ def ordinal_day(date_time: datetime) -> str:
 class Entry:
     """A class where each instance is an entry in the activity log."""
     def __init__(self, body_text: str):
-        self.body_text = body_text
+        self.body_text = body_text.expandtabs(4)  # Replace tabs with 4 spaces
 
         now = datetime.now()
 

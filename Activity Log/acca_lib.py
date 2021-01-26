@@ -1,3 +1,4 @@
+import os
 from datetime import datetime
 
 
@@ -44,3 +45,19 @@ class Entry:
         return f'''### {self.date_and_time}
 
 {self.body_text}\n'''
+
+
+def write_entry(entry_text: str, filename='Activity Log'):
+    """Take an entry body text and an optional filename and write the entry with the current date and time to filename.md and filename.html in the respective formats.
+
+If no filename is specified, 'Activity Log' is used."""
+    entry = Entry(entry_text)
+
+    # Get rid of . if filename has it
+    filename, _ = os.path.splitext(filename)
+
+    with open(filename + '.md', 'a') as f:
+        f.write(entry.create_markdown())
+
+    with open(filename + '.html', 'a') as f:
+        f.write(entry.create_html())

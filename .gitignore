@@ -18,3 +18,5 @@
 *.fls
 *.run.xml
 *.synctex.gz
+
+**/.idea

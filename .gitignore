@@ -19,4 +19,6 @@
 *.run.xml
 *.synctex.gz
 
+# Python stuff
 **/.idea
+**/__pycache__

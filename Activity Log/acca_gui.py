@@ -14,11 +14,13 @@ def write_entry():
     text_box.delete(1.0, tk.END)
 
 
+info = tk.Label(root, text='This text box supports markdown formatting. For instance, you can do *italics*, **bold**, `code`, [links](https://links.com), etc.')
 text_box = tk.Text(root)
 write_button = tk.Button(root, text='Write entry to file', command=write_entry, state='disabled')
 
-text_box.grid(column=0, row=0, pady=(10, 30), padx=10)
-write_button.grid(column=0, row=1, pady=(0, 10))
+info.grid(column=0, row=0, pady=(10, 0), padx=10)
+text_box.grid(column=0, row=1, pady=(10, 30), padx=10)
+write_button.grid(column=0, row=2, pady=(0, 10))
 
 
 def update_loop():

@@ -180,12 +180,18 @@ If no filename is specified, 'Activity Log' is used."""
     md_file = filename + '.md'
     html_file = filename + '.html'
 
-    check_top_text(md_file)
+    try:
+        check_top_text(md_file)
+    except NoTopTextError:
+        write_top_text(md_file)
 
     with open(md_file, 'a') as f:
         f.write(entry.create_markdown())
 
-    check_top_text(html_file)
+    try:
+        check_top_text(html_file)
+    except NoTopTextError:
+        write_top_text(html_file)
 
     with open(html_file, 'a') as f:
         f.write(entry.create_html())

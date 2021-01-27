@@ -51,22 +51,6 @@ class Entry:
         """Return a markdown representation of the entry."""
         return f'''### {self.date_and_time}
 
-
-
-def write_entry(entry_text: str, filename: str = 'Activity Log'):
-    """Take an entry body text and an optional filename and write the entry with the current date and time to filename.md and filename.html in the respective formats.
-
-If no filename is specified, 'Activity Log' is used."""
-    entry = Entry(entry_text)
-
-    # Get rid of . if filename has it
-    filename, _ = os.path.splitext(filename)
-
-    with open(filename + '.md', 'a') as f:
-        f.write(entry.create_markdown())
-
-    with open(filename + '.html', 'a') as f:
-        f.write(entry.create_html())
 {self.body_text}\n\n'''
 
 
@@ -160,3 +144,36 @@ class NoTopTextError(Exception):
 
 This is just to handle this particular error and prompt the user to create the top text."""
     pass
+
+
+def check_top_text(filename: str):
+    """Checks if a given file has the top text. Raises NoTopTextError if not. Creates an empty file and raises error if file doesn't exist."""
+    if not os.path.isfile(filename):
+        f = open(filename, 'x')
+        f.close()
+
+    with open(filename, 'r') as f:
+        if 'Activity Log' not in f.read():
+            raise NoTopTextError(filename + ' has no top text')
+
+
+def write_entry(entry_text: str, filename: str = 'Activity Log'):
+    """Take an entry body text and an optional filename and write the entry with the current date and time to filename.md and filename.html in the respective formats.
+
+If no filename is specified, 'Activity Log' is used."""
+    entry = Entry(entry_text)
+
+    # Get rid of . if filename has it
+    filename, _ = os.path.splitext(filename)
+    md_file = filename + '.md'
+    html_file = filename + '.html'
+
+    check_top_text(md_file)
+
+    with open(md_file, 'a') as f:
+        f.write(entry.create_markdown())
+
+    check_top_text(html_file)
+
+    with open(html_file, 'a') as f:
+        f.write(entry.create_html())

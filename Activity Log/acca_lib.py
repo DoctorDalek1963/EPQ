@@ -153,6 +153,22 @@ def check_top_text(filename: str):
             raise NoTopTextError(filename + ' has no top text')
 
 
+def write_top_text(filename: str):
+    """Write the top text given by the variables in .env to filename. Only accepts .md ot .html files.
+
+Warning: Will erase all other data in that file."""
+    top_text = TopText()
+
+    _, ext = os.path.splitext(filename)
+
+    if ext == '.md':
+        with open(filename, 'w') as f:
+            f.write(top_text.create_markdown())
+    elif ext == '.html':
+        with open(filename, 'w') as f:
+            f.write(top_text.create_html())
+
+
 def write_entry(entry_text: str, filename: str = 'Activity Log'):
     """Take an entry body text and an optional filename and write the entry with the current date and time to filename.md and filename.html in the respective formats.
 

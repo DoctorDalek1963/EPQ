@@ -30,7 +30,10 @@ class Entry:
         day_of_month = ordinal_day(now)
 
         original_hour = now.hour
-        hour = original_hour if original_hour < 12 else original_hour - 12  # Convert to 12 hour
+        hour = original_hour if original_hour < 13 else original_hour - 12  # Convert to 12 hour
+        # Convert midnight
+        if hour == 0:
+            hour = 12
 
         self.date_and_time = now.strftime(f'%A {day_of_month} %B %Y, {hour}:%M %p')
 

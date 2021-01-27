@@ -114,6 +114,8 @@ class TopText:
 </table>
 </div>
 
+<hr>
+
 <div class="entry-list">\n\n\n'''
 
     def create_markdown(self):

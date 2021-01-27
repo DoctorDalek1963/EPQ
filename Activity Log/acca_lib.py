@@ -65,3 +65,88 @@ If no filename is specified, 'Activity Log' is used."""
 
     with open(filename + '.html', 'a') as f:
         f.write(entry.create_html())
+
+
+class TopText:
+    """A class where there should only be one instance, which is the text at the top of the Activity Log containing all the necessary information."""
+    def __init__(self, learner_name='LEARNER NAME', learner_number='LEARNER NUMBER', centre_name='CENTRE NAME',
+                 centre_number='CENTRE NUMBER', unit_name='UNIT NAME', unit_number='UNIT NUMBER',
+                 teacher_assessor='TEACHER ASSESSOR', proposed_project_title='PROPOSED PROJECT TITLE'):
+        """All arguments are strings. Even the numbers.
+
+If left blank, they will default to the name of the argument in all caps."""
+        self.learner_name = learner_name
+        self.learner_number = learner_number
+        self.centre_name = centre_name
+        self.centre_number = centre_number
+        self.unit_name = unit_name
+        self.unit_number = unit_number
+        self.teacher_assessor = teacher_assessor
+        self.proposed_project_title = proposed_project_title
+
+    def create_html(self):
+        """Create the top text for the HTML Activity Log."""
+        return f'''<head>
+    <title>Activity Log</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<h1>Activity Log</h1>
+<table>
+<tbody>
+<tr>
+    <td>Learner Name:</td>
+    <td>{self.learner_name}</td>
+</tr>
+<tr>
+    <td>Learner Number:</td>
+    <td>{self.learner_number}</td>
+</tr>
+<tr>
+    <td>Centre Name:</td>
+    <td>{self.centre_name}</td>
+</tr>
+<tr>
+    <td>Centre Number:</td>
+    <td>{self.centre_number}</td>
+</tr>
+<tr>
+    <td>Unit Name:</td>
+    <td>{self.unit_name}</td>
+</tr>
+<tr>
+    <td>Unit Number:</td>
+    <td>{self.unit_number}</td>
+</tr>
+<tr>
+    <td>Teacher Assessor:</td>
+    <td>{self.teacher_assessor}</td>
+</tr>
+<tr>
+    <td>Proposed project title:</td>
+    <td>{self.proposed_project_title}</td>
+</tr>
+</tbody>
+</table>
+
+<div class="entry-list">\n\n\n'''
+
+    def create_markdown(self):
+        """Create the top text for the markdown Activity Log."""
+        return f'''# Activity Log
+
+Learner Name: {self.learner_name}
+
+Learner Number: {self.learner_number}
+
+Centre Name: {self.centre_name}
+
+Centre Number: {self.centre_number}
+
+Unit Name: {self.unit_name}
+
+Unit Number: {self.unit_number}
+
+Teacher Assessor: {self.teacher_assessor}
+
+Proposed project title: {self.proposed_project_title}\n\n\n'''

@@ -1,6 +1,7 @@
 import os
 from datetime import datetime
 import markdown
+from decouple import config
 
 
 def ordinal_day(date_time: datetime) -> str:
@@ -56,20 +57,15 @@ class Entry:
 
 class TopText:
     """A class where there should only be one instance, which is the text at the top of the Activity Log containing all the necessary information."""
-    def __init__(self, learner_name='LEARNER NAME', learner_number='LEARNER NUMBER', centre_name='CENTRE NAME',
-                 centre_number='CENTRE NUMBER', unit_name='UNIT NAME', unit_number='UNIT NUMBER',
-                 teacher_assessor='TEACHER ASSESSOR', proposed_project_title='PROPOSED PROJECT TITLE'):
-        """All arguments are strings. Even the numbers.
-
-If left blank, they will default to the name of the argument in all caps."""
-        self.learner_name = learner_name
-        self.learner_number = learner_number
-        self.centre_name = centre_name
-        self.centre_number = centre_number
-        self.unit_name = unit_name
-        self.unit_number = unit_number
-        self.teacher_assessor = teacher_assessor
-        self.proposed_project_title = proposed_project_title
+    def __init__(self):
+        self.learner_name = config('LEARNER_NAME')
+        self.learner_number = config('LEARNER_NUMBER')
+        self.centre_name = config('CENTRE_NAME')
+        self.centre_number = config('CENTRE_NUMBER')
+        self.unit_name = config('UNIT_NAME')
+        self.unit_number = config('UNIT_NUMBER')
+        self.teacher_assessor = config('TEACHER_ASSESSOR')
+        self.proposed_project_title = config('PROPOSED_PROJECT_TITLE')
 
     def create_html(self):
         """Create the top text for the HTML Activity Log."""

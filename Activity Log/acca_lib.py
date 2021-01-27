@@ -74,6 +74,7 @@ class TopText:
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<div class="top-text">
 <h1>Activity Log</h1>
 <table>
 <tbody>
@@ -111,6 +112,7 @@ class TopText:
 </tr>
 </tbody>
 </table>
+</div>
 
 <div class="entry-list">\n\n\n'''
 

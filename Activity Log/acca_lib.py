@@ -158,7 +158,7 @@ def check_top_text(filename: str):
 
 
 def write_top_text(filename: str):
-    """Write the top text given by the variables in .env to filename. Only accepts .md ot .html files.
+    """Write the top text given by the variables in .env to filename. Only accepts .md or .html files.
 
 Warning: Will erase all other data in that file."""
     top_text = TopText()

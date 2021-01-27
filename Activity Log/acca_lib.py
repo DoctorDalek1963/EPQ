@@ -45,13 +45,12 @@ class Entry:
     <p class="body-text">
         {markdown.markdown(self.body_text)}
     </p>
-</div>\n'''
+</div>\n\n'''
 
     def create_markdown(self) -> str:
         """Return a markdown representation of the entry."""
         return f'''### {self.date_and_time}
 
-{self.body_text}\n'''
 
 
 def write_entry(entry_text: str, filename: str = 'Activity Log'):
@@ -68,6 +67,7 @@ If no filename is specified, 'Activity Log' is used."""
 
     with open(filename + '.html', 'a') as f:
         f.write(entry.create_html())
+{self.body_text}\n\n'''
 
 
 class TopText:

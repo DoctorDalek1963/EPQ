@@ -44,7 +44,7 @@ class Entry:
         return f'''<div class="entry">
     <h3 class="date-and-time">{self.date_and_time}</h3>
     <p class="body-text">
-        {markdown.markdown(self.body_text)}
+        {markdown.markdown(self.body_text.replace('<', '&lt;').replace('>', '&gt;'))}
     </p>
 </div>\n\n'''
 

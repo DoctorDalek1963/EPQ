@@ -150,3 +150,10 @@ Unit Number: {self.unit_number}
 Teacher Assessor: {self.teacher_assessor}
 
 Proposed project title: {self.proposed_project_title}\n\n\n'''
+
+
+class NoTopTextError(Exception):
+    """A simple class to create a custom error if the file being written to doesn't have top text.
+
+This is just to handle this particular error and prompt the user to create the top text."""
+    pass

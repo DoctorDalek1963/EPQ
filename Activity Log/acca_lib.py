@@ -57,6 +57,37 @@ class Entry:
 
 class TopText:
     """A class where there should only be one instance, which is the text at the top of the Activity Log containing all the necessary information."""
+    style_sheet = '''    <style>
+        body {font-family: Arial, Helvetica, sans-serif;}
+        div.top-text {
+            margin: 0.5em;
+            padding: 0.5em;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        div.top-text h1 {margin: 0 0 0.5em 0;}
+        table, td {
+            border: 1px solid black;
+            padding: 0.2em;
+            width: 400px;
+        }
+        table {border-collapse: collapse;}
+        hr {
+            margin-top: 2em;
+            margin-bottom: 2em;
+            width: 97vw;
+        }
+        div.entry-list {
+            display: flex;
+            flex-direction: column;
+            margin: 0 3em 2em 3em; /* 2em margin on the bottom */
+            padding: 0 2em 0 2em;
+            width: auto; /* Fill up available space */
+        }
+        div.entry {margin: 0.5em 0 0.5em 0;}
+    </style>'''
+
     def __init__(self):
         self.learner_name = config('LEARNER_NAME')
         self.learner_number = config('LEARNER_NUMBER')
@@ -71,7 +102,7 @@ class TopText:
         """Create the top text for the HTML Activity Log."""
         return f'''<head>
     <title>Activity Log</title>
-    <link rel="stylesheet" href="style.css">
+    {TopText.style_sheet}
 </head>
 <body>
 <div class="top-text">

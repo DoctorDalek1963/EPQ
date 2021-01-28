@@ -167,7 +167,7 @@ Unit Number: {self.unit_number}
 
 Teacher Assessor: {self.teacher_assessor}
 
-Proposed project title: {self.proposed_project_title}\n\n\n'''
+Proposed project title: {self.proposed_project_title}\n\n---\n\n\n'''
 
 
 class NoTopTextError(Exception):

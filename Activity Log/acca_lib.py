@@ -52,7 +52,7 @@ class Entry:
         """Return a markdown representation of the entry."""
         return f'''### {self.date_and_time}
 
-{self.body_text}\n\n'''
+{self.body_text}\n'''
 
 
 class TopText:

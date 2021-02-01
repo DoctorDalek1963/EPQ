@@ -11,10 +11,6 @@ root.title('Activity Logger')
 root.resizable(False, False)
 
 
-def open_markdown_link(event):  # Entry is passed here because tkinter will throw an error if it isn't. The value isn't used
-    webbrowser.open_new(markdown_link)
-
-
 def write_entry():
     acca_lib.write_entry(entryText)
     text_box.delete(1.0, tk.END)
@@ -31,7 +27,7 @@ link.grid(column=0, row=1, pady=0, padx=10)
 text_box.grid(column=0, row=2, pady=(10, 30), padx=10)
 write_button.grid(column=0, row=3, pady=(0, 10))
 
-link.bind('<Button-1>', open_markdown_link)
+link.bind('<Button-1>', lambda _: webbrowser.open_new(markdown_link))  # lambda is used for an anonymous callback function
 
 
 def update_loop():

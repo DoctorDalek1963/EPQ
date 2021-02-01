@@ -1,10 +1,11 @@
 import os
 import shutil
+import subprocess
 
-os.system('cmd /c "pyinstaller acca_gui.py -wF -n Activity_Logger --distpath ."')
 if os.path.isfile('Activity_Logger.exe'):
     os.remove('Activity_Logger.exe')
 
+subprocess.call('pyinstaller acca_gui.py -wF -n Activity_Logger --distpath .', shell=True)
 
 os.remove('Activity_Logger.spec')
 

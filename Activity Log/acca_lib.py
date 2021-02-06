@@ -1,3 +1,5 @@
+#!/bin/python3.8
+
 import os
 from datetime import datetime
 import markdown
@@ -231,3 +233,23 @@ If no filename is specified, 'Activity Log' is used."""
 
     with open(html_file, 'a') as f:
         f.write(entry.create_html())
+
+
+def take_multiline_input() -> str:
+    lines = []
+
+    print('This is a multiline input. You can use as many lines as you want. You cannot edit a line after you have pressed enter.\n\nWhen you want to finish, simply type "done" on a line on its own. Press Ctrl+C at any time to cancel the entry and exit.\n')
+
+    while True:
+        line = input()
+        if line == 'done':
+            break  # Break out of the loop to concat all the other lines
+        else:
+            lines.append(line)
+
+    return '\n'.join(lines)
+
+
+if __name__ == '__main__':
+    print('Please input a new Activity Log entry:\n')
+    write_entry(take_multiline_input())

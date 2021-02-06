@@ -1,3 +1,5 @@
+#!/bin/python3.8
+
 import tkinter as tk
 import _tkinter
 import webbrowser

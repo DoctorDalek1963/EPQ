@@ -86,6 +86,7 @@ class TopText:
             width: auto; /* Fill up available space */
         }
         div.entry {margin: 0.5em 0 0.5em 0;}
+        div.entry hr {width: 50%;}
     </style>'''
 
     def __init__(self):

@@ -1,4 +1,4 @@
-#!/bin/python3.9
+#!/usr/bin/env python
 
 import tkinter as tk
 import _tkinter

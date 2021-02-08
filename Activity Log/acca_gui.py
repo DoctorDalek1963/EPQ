@@ -32,7 +32,7 @@ text_box.grid(column=0, row=2, pady=(10, 30), padx=10, columnspan=2)
 write_button.grid(column=0, row=3, pady=(0, 10), padx=(0, 20))
 exit_button.grid(column=1, row=3, pady=(0, 10), padx=(20, 0))
 
-link.bind('<Button-1>', lambda _: webbrowser.open_new(markdown_link))  # lambda is used for an anonymous callback function
+link.bind('<Button-1>', lambda _: webbrowser.open_new_tab(markdown_link))  # lambda is used for an anonymous callback function
 
 
 def update_loop():

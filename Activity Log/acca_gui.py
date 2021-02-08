@@ -19,7 +19,8 @@ def write_entry():
 
 
 info = tk.Label(root, text='This text box supports markdown formatting. For instance, you can do *italics*, **bold text**, \n'
-                           '`inline code`, [links](https://google.com), ![images](images/example.png), etc.\n\n')
+                           '`inline code`, [a link](https://google.com), ![an image stored in a folder](image_folder/example.png),\n'
+                           '![an image stored online](https://link.to/image.png)etc.\n\n')
 link = tk.Label(root, text=f'[Click this]({markdown_link}) to see everything you can do with markdown.')
 text_box = tk.Text(root, wrap='word')
 write_button = tk.Button(root, text='Write entry to file', command=write_entry, state='disabled')

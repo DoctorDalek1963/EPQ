@@ -3,7 +3,7 @@
 import tkinter as tk
 import _tkinter
 import webbrowser
-import acca_lib
+import library
 
 entryText = ''
 markdown_link = 'https://www.markdownguide.org/basic-syntax/'
@@ -14,7 +14,7 @@ root.resizable(False, False)
 
 
 def write_entry():
-    acca_lib.write_entry(entryText)
+    library.write_entry(entryText)
     text_box.delete(1.0, tk.END)
 
 

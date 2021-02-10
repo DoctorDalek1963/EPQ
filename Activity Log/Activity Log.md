@@ -33,3 +33,10 @@ I read sections 21-34 of *Philosophical Investigations*. Wittgenstein talked a l
 
 I just watched the Philosophy Tube video *[Identity: A Trans Coming Out Story](https://www.youtube.com/watch?v=AITRzvm0Xtg)* and cried my eyes out because it's amazing. But also, there's a lot of valuable information about trans people, their lives, and their identities that I do want to look at in more detail and eventually write about. The metaphor of identity as a mosaic was one that I really liked. I probably won't read Audre Lorde's *Zami: A New Spelling of My Name* because it's not really focussed on gender specifically, but I might end up reading it for the discussions of identity, which vary wildly from Descartes' "Cogito ergo sum", or I'll just read it for fun. I also especially liked the comparison of living as a gender that one doesn't identify with as working at a bad job. There were some very valuable bits of information in that video.
 
+### Wednesday 10th February 2021, 9:55 PM
+
+I read the first section of Chapter 1 of *Gender Trouble* by Judith Butler. It's incredibly dense and hard going, especially for someone who doesn't read much academia normally. She kept using words like *juridical* and *fictive*, which seemed unnecessarily opaque. Anyway, once I managed to parse it, the content was very interesting.
+
+Butler mainly talked about how the category of 'woman' is blurry and ill-defined. It is a category that claims to represent a group of people but necessarily fails at doing that properly, as all identity politics must. Humans cannot be easily sorted into neat little categories. Every individual is unique and has their own, unique identity. As such, no one category can accurately claim to represent any whole group of people. There were some allusions near the end of the section to the idea that the concept of 'woman' merely serves to reinforce binary, hegemonically masculine gender norms.
+
+There were some lovely ideas just in that first section and I'd love to see where Butler takes them. It's just a shame that I have to read practically every paragraph twice to understand what she's trying to say.

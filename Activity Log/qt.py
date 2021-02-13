@@ -39,6 +39,7 @@ class ActivityLoggerGUI(QMainWindow):
 
         self.exit_button = QtWidgets.QPushButton(self)
         self.exit_button.setText('Exit')
+        self.exit_button.clicked.connect(self.close)
         self.widgets.append(self.exit_button)
 
         self.update_widget_size()

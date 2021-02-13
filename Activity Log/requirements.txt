@@ -1,2 +1,3 @@
 python-decouple
 markdown
+PyQt5

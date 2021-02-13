@@ -15,6 +15,7 @@ class ActivityLoggerGUI(QMainWindow):
         self.setGeometry(200, 200, 500, 550)
 
         self.entry_text = ''
+        self.markdown_link = 'https://www.markdownguide.org/basic-syntax/'
 
         # ===== Create widgets
 
@@ -25,8 +26,11 @@ class ActivityLoggerGUI(QMainWindow):
         self.info.setAlignment(QtCore.Qt.AlignCenter)
 
         self.link = QtWidgets.QLabel(self)
-        self.link.setText('[Click this](https://www.markdownguide.org/basic-syntax/) to see everything you can do with markdown.')
+        self.link.setText(f'<a href="{self.markdown_link}"><span style="color: black; '
+                          f'text-decoration: none;">[Click this]({self.markdown_link})</span></a> '
+                          'to see everything you can do with markdown.')
         self.link.setAlignment(QtCore.Qt.AlignCenter)
+        self.link.setOpenExternalLinks(True)
 
         self.text_box = QtWidgets.QTextEdit(self)
         self.text_box.setPlaceholderText('Type your Activity Log entry...')

@@ -59,9 +59,12 @@ class ActivityLoggerGUI(QMainWindow):
         self.vbox.addWidget(self.info)
         self.vbox.addWidget(self.link)
         self.vbox.addWidget(self.text_box)
+        self.setContentsMargins(10, 10, 10, 10)
+        self.vbox.setSpacing(20)
 
         self.hbox.addWidget(self.write_button)
         self.hbox.addWidget(self.exit_button)
+        self.hbox.setSpacing(20)
 
         self.vbox.addLayout(self.hbox)
 

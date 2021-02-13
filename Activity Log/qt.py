@@ -11,7 +11,8 @@ class ActivityLoggerGUI(QMainWindow):
         super(ActivityLoggerGUI, self).__init__()
 
         self.setWindowTitle('Activity Logger')
-        self.setGeometry(200, 200, 500, 500)
+        # This 600 just makes the window taller to make the text box bigger
+        self.setGeometry(200, 200, 500, 600)
 
         self.entry_text = ''
 

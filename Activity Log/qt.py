@@ -1,7 +1,5 @@
 #!/usr/bin/env python
 
-# This is a PyQt5 based refactoring of the Activity Logger GUI
-
 from PyQt5 import QtWidgets, QtCore
 from PyQt5.QtWidgets import QMainWindow, QApplication, QVBoxLayout, QHBoxLayout, QWidget
 import sys
@@ -15,35 +13,28 @@ class ActivityLoggerGUI(QMainWindow):
         self.setWindowTitle('Activity Logger')
         self.setGeometry(200, 200, 500, 500)
 
-        # Create widgets
-        self.widgets = []
+        # ===== Create widgets
 
         self.info = QtWidgets.QLabel(self)
         self.info.setText('This text box supports markdown formatting. For instance, you can do *italics*, **bold text**, \n'
                           '`inline code`, [a link](https://google.com), ![an image stored in a folder](image_folder/example.png),\n'
                           '![an image stored online](https://link.to/image.png)etc.\n\n')
         self.info.setAlignment(QtCore.Qt.AlignCenter)
-        self.widgets.append(self.info)
 
         self.link = QtWidgets.QLabel(self)
         self.link.setText('[Click this](https://www.markdownguide.org/basic-syntax/) to see everything you can do with markdown.')
         self.link.setAlignment(QtCore.Qt.AlignCenter)
-        self.widgets.append(self.link)
 
         self.text_box = QtWidgets.QTextEdit(self)
-        self.widgets.append(self.text_box)
 
         self.write_button = QtWidgets.QPushButton(self)
         self.write_button.setText('Write entry to file')
-        self.widgets.append(self.write_button)
 
         self.exit_button = QtWidgets.QPushButton(self)
         self.exit_button.setText('Exit')
         self.exit_button.clicked.connect(self.close)
-        self.widgets.append(self.exit_button)
 
-        self.update_widget_size()
-
+        # ===== Arrange all widgets properly
         self.vbox = QVBoxLayout()
         self.hbox = QHBoxLayout()
         self.arrange_widgets()
@@ -51,10 +42,6 @@ class ActivityLoggerGUI(QMainWindow):
         central_widget = QWidget()
         central_widget.setLayout(self.vbox)
         self.setCentralWidget(central_widget)
-
-    def update_widget_size(self):
-        for widget in self.widgets:
-            widget.adjustSize()
 
     def arrange_widgets(self):
         self.vbox.addWidget(self.info)
@@ -67,6 +54,7 @@ class ActivityLoggerGUI(QMainWindow):
         self.hbox.addWidget(self.exit_button)
         self.hbox.setSpacing(20)
 
+        # The last item in the vbox is a hbox, so the final row can have two items side-by-side
         self.vbox.addLayout(self.hbox)
 
 

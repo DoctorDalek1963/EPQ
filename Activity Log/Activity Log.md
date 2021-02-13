@@ -40,3 +40,4 @@ I read the first section of Chapter 1 of *Gender Trouble* by Judith Butler. It's
 Butler mainly talked about how the category of 'woman' is blurry and ill-defined. It is a category that claims to represent a group of people but necessarily fails at doing that properly, as all identity politics must. Humans cannot be easily sorted into neat little categories. Every individual is unique and has their own, unique identity. As such, no one category can accurately claim to represent any whole group of people. There were some allusions near the end of the section to the idea that the concept of 'woman' merely serves to reinforce binary, hegemonically masculine gender norms.
 
 There were some lovely ideas just in that first section and I'd love to see where Butler takes them. It's just a shame that I have to read practically every paragraph twice to understand what she's trying to say.
+

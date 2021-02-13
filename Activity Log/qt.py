@@ -13,6 +13,8 @@ class ActivityLoggerGUI(QMainWindow):
         self.setWindowTitle('Activity Logger')
         self.setGeometry(200, 200, 500, 500)
 
+        self.entry_text = ''
+
         # ===== Create widgets
 
         self.info = QtWidgets.QLabel(self)
@@ -26,9 +28,12 @@ class ActivityLoggerGUI(QMainWindow):
         self.link.setAlignment(QtCore.Qt.AlignCenter)
 
         self.text_box = QtWidgets.QTextEdit(self)
+        self.text_box.setPlaceholderText('Type your Activity Log entry...')
 
         self.write_button = QtWidgets.QPushButton(self)
         self.write_button.setText('Write entry to file')
+        # self.write_button.setEnabled(False)
+        self.write_button.clicked.connect(self.write_entry)
 
         self.exit_button = QtWidgets.QPushButton(self)
         self.exit_button.setText('Exit')
@@ -47,6 +52,7 @@ class ActivityLoggerGUI(QMainWindow):
         self.vbox.addWidget(self.info)
         self.vbox.addWidget(self.link)
         self.vbox.addWidget(self.text_box)
+        # The margins are around the edges of the window and the spacing is between widgets
         self.setContentsMargins(10, 10, 10, 10)
         self.vbox.setSpacing(20)
 
@@ -56,6 +62,11 @@ class ActivityLoggerGUI(QMainWindow):
 
         # The last item in the vbox is a hbox, so the final row can have two items side-by-side
         self.vbox.addLayout(self.hbox)
+
+    def write_entry(self):
+        self.entry_text = self.text_box.toPlainText()
+        library.write_entry(self.entry_text)
+        self.text_box.setText('')
 
 
 def show_window():

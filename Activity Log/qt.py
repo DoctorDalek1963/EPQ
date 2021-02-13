@@ -41,6 +41,7 @@ class ActivityLoggerGUI(QMainWindow):
         self.exit_button.clicked.connect(self.close)
 
         # ===== Arrange all widgets properly
+
         self.vbox = QVBoxLayout()
         self.hbox = QHBoxLayout()
         self.arrange_widgets()

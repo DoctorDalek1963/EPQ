@@ -41,7 +41,7 @@ class ActivityLoggerGUI(QMainWindow):
 
         self.write_button = QtWidgets.QPushButton(self)
         self.write_button.setText('Write entry to file')
-        # self.write_button.setEnabled(False)
+        self.write_button.setEnabled(False)
         self.write_button.clicked.connect(self.write_entry)
 
         self.exit_button = QtWidgets.QPushButton(self)

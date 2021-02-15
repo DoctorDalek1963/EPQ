@@ -1,55 +1,108 @@
 #!/usr/bin/env python
 
-import tkinter as tk
-import _tkinter
-import webbrowser
+from PyQt5 import QtWidgets, QtCore
+from PyQt5.QtWidgets import QMainWindow, QApplication, QVBoxLayout, QHBoxLayout, QWidget
+import sys
 import library
-
-entryText = ''
-markdown_link = 'https://www.markdownguide.org/basic-syntax/'
-
-root = tk.Tk()
-root.title('Activity Logger')
-root.resizable(False, False)
+import threading
 
 
-def write_entry():
-    library.write_entry(entryText)
-    text_box.delete(1.0, tk.END)
+class ActivityLoggerGUI(QMainWindow):
+    def __init__(self):
+        super(ActivityLoggerGUI, self).__init__()
 
+        # A boolean to see if the window exists. Used to close properly
+        self._exists = True
 
-info = tk.Label(root, text='This text box supports markdown formatting. For instance, you can do *italics*, **bold text**, \n'
+        self.setWindowTitle('Activity Logger')
+        # This 550 just makes the window taller to make the text box bigger
+        self.setGeometry(200, 200, 500, 550)
+
+        self._entry_text = ''
+        self._markdown_link = 'https://www.markdownguide.org/basic-syntax/'
+
+        # ===== Create widgets
+
+        self._info = QtWidgets.QLabel(self)
+        self._info.setText('This text box supports markdown formatting. For instance, you can do *italics*, **bold text**, \n'
                            '`inline code`, [a link](https://google.com), ![an image stored in a folder](image_folder/example.png),\n'
-                           '![an image stored online](https://link.to/image.png)etc.\n\n')
-link = tk.Label(root, text=f'[Click this]({markdown_link}) to see everything you can do with markdown.')
-text_box = tk.Text(root, wrap='word')
-write_button = tk.Button(root, text='Write entry to file', command=write_entry, state='disabled')
-exit_button = tk.Button(root, text='Exit', command=root.destroy)
+                           '![an image stored online](https://link.to/image.png)etc.')
+        self._info.setAlignment(QtCore.Qt.AlignCenter)
 
-info.grid(column=0, row=0, pady=(10, 0), padx=10, columnspan=2)
-link.grid(column=0, row=1, pady=0, padx=10, columnspan=2)
-text_box.grid(column=0, row=2, pady=(10, 30), padx=10, columnspan=2)
-write_button.grid(column=0, row=3, pady=(0, 10), padx=(0, 20))
-exit_button.grid(column=1, row=3, pady=(0, 10), padx=(20, 0))
+        self._link = QtWidgets.QLabel(self)
+        self._link.setText(f'<a href="{self._markdown_link}"><span style="color: black; '
+                           f'text-decoration: none;">[Click this]({self._markdown_link})</span></a> '
+                           'to see everything you can do with markdown.')
+        self._link.setAlignment(QtCore.Qt.AlignCenter)
+        self._link.setOpenExternalLinks(True)
 
-link.bind('<Button-1>', lambda _: webbrowser.open_new_tab(markdown_link))  # lambda is used for an anonymous callback function
+        self._text_box = QtWidgets.QTextEdit(self)
+        self._text_box.setPlaceholderText('Type your Activity Log entry...')
+
+        self._write_button = QtWidgets.QPushButton(self)
+        self._write_button.setText('Write entry to file')
+        self._write_button.setEnabled(False)
+        self._write_button.clicked.connect(self._write_entry)
+
+        self._exit_button = QtWidgets.QPushButton(self)
+        self._exit_button.setText('Exit')
+        self._exit_button.clicked.connect(self._close_properly)
+
+        # ===== Arrange all widgets properly
+
+        self._vbox = QVBoxLayout()
+        self._hbox = QHBoxLayout()
+        self.arrange_widgets()
+
+        self._central_widget = QWidget()
+        self._central_widget.setLayout(self._vbox)
+        self.setCentralWidget(self._central_widget)
+
+        # Start a thread to check the text box and enable the write button if it's got text in it
+        self._button_enable_thread = threading.Thread(target=self._button_enable_loop)
+        self._button_enable_thread.start()
+
+    def arrange_widgets(self):
+        self._vbox.addWidget(self._info)
+        self._vbox.addWidget(self._link)
+        self._vbox.addWidget(self._text_box)
+        # The margins are around the edges of the window and the spacing is between widgets
+        self.setContentsMargins(10, 10, 10, 10)
+        self._vbox.setSpacing(20)
+
+        self._hbox.addWidget(self._write_button)
+        self._hbox.addWidget(self._exit_button)
+        self._hbox.setSpacing(20)
+
+        # The last item in the vbox is a hbox, so the final row can have two items side-by-side
+        self._vbox.addLayout(self._hbox)
+
+    def _write_entry(self):
+        self._entry_text = self._text_box.toPlainText()
+        library.write_entry(self._entry_text)
+        self._text_box.setText('')
+
+    def _check_text_box(self):
+        if self._text_box.toPlainText() != '':
+            self._write_button.setEnabled(True)
+        else:
+            self._write_button.setEnabled(False)
+
+    def _button_enable_loop(self):
+        while self._exists:
+            self._check_text_box()
+
+    def _close_properly(self):
+        self.close()
+        self._exists = False
 
 
-def update_loop():
-    global entryText
-
-    while True:
-        try:
-            entryText = text_box.get(1.0, tk.END)
-            if entryText != '\n':
-                write_button.config(state='normal')
-            else:
-                write_button.config(state='disabled')
-
-            root.update()
-        except _tkinter.TclError:
-            return
+def show_window():
+    app = QApplication(sys.argv)
+    window = ActivityLoggerGUI()
+    window.show()
+    sys.exit(app.exec_())
 
 
 if __name__ == '__main__':
-    update_loop()
+    show_window()

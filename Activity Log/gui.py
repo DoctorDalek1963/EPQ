@@ -52,7 +52,7 @@ class ActivityLoggerGUI(QMainWindow):
 
         self._vbox = QVBoxLayout()
         self._hbox = QHBoxLayout()
-        self.arrange_widgets()
+        self._arrange_widgets()
 
         self._central_widget = QWidget()
         self._central_widget.setLayout(self._vbox)
@@ -62,7 +62,7 @@ class ActivityLoggerGUI(QMainWindow):
         self._button_enable_thread = threading.Thread(target=self._button_enable_loop)
         self._button_enable_thread.start()
 
-    def arrange_widgets(self):
+    def _arrange_widgets(self):
         self._vbox.addWidget(self._info)
         self._vbox.addWidget(self._link)
         self._vbox.addWidget(self._text_box)

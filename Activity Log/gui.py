@@ -44,6 +44,7 @@ class ActivityLoggerGUI(QMainWindow):
         self._write_button.setText('Write entry to file')
         self._write_button.setEnabled(False)
         self._write_button.clicked.connect(self._write_entry)
+        self._write_button.setToolTip('Write the contents of the text box to the HTML and markdown files. <b>(Ctrl + Enter)</b>')
 
         # This is a shortcut for the write entry button
         self._write_shortcut = QShortcut(QKeySequence("Ctrl+Return"), self)
@@ -52,6 +53,7 @@ class ActivityLoggerGUI(QMainWindow):
         self._exit_button = QtWidgets.QPushButton(self)
         self._exit_button.setText('Exit')
         self._exit_button.clicked.connect(self._close_properly)
+        self._exit_button.setToolTip('Exit the program and discard the contents of the text box. <b>(Ctrl + Q)</b>')
 
         # This is a shortcut for the exit button
         self._exit_shortcut = QShortcut(QKeySequence("Ctrl+Q"), self)

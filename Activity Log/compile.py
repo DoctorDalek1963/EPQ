@@ -10,12 +10,12 @@ def compile_logger(gui=True):
 
 This function takes one argument, gui, which is true by default. If it's true, this function will compile the GUI version of the logger, if false, it will compile the command line version."""
     # Get filename from gui boolean
-    filename = 'acca_gui.py' if gui else 'acca_cli.py'
+    filename = 'gui.py' if gui else 'cli.py'
 
     if os.path.isfile('Activity_Logger.exe'):
         os.remove('Activity_Logger.exe')
 
-    subprocess.call('pyinstaller acca_gui.py -wF -n Activity_Logger --distpath .', shell=True)
+    subprocess.call(f'pyinstaller {filename} -wF -n Activity_Logger --distpath .', shell=True)
 
     os.remove('Activity_Logger.spec')
 

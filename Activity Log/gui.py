@@ -1,7 +1,8 @@
 #!/usr/bin/env python
 
 from PyQt5 import QtWidgets, QtCore
-from PyQt5.QtWidgets import QMainWindow, QApplication, QVBoxLayout, QHBoxLayout, QWidget
+from PyQt5.QtWidgets import QMainWindow, QApplication, QVBoxLayout, QHBoxLayout, QWidget, QShortcut
+from PyQt5.QtGui import QKeySequence
 import sys
 import library
 import threading
@@ -44,9 +45,17 @@ class ActivityLoggerGUI(QMainWindow):
         self._write_button.setEnabled(False)
         self._write_button.clicked.connect(self._write_entry)
 
+        # This is a shortcut for the write entry button
+        self._write_shortcut = QShortcut(QKeySequence("Ctrl+Return"), self)
+        self._write_shortcut.activated.connect(self._write_entry)
+
         self._exit_button = QtWidgets.QPushButton(self)
         self._exit_button.setText('Exit')
         self._exit_button.clicked.connect(self._close_properly)
+
+        # This is a shortcut for the exit button
+        self._exit_shortcut = QShortcut(QKeySequence("Ctrl+Q"), self)
+        self._exit_shortcut.activated.connect(self._close_properly)
 
         # ===== Arrange all widgets properly
 

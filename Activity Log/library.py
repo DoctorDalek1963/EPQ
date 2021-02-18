@@ -1,3 +1,33 @@
+"""This module has the classes and functions for interpreting and writing user input to the HTML and markdown versions of the Activity Log.
+
+Classes:
+    Entry:
+        Words
+
+    TopText:
+        The class for the preamble top text of the Activity Log.
+
+    NoTopTextError:
+        A simple exception if the file being written to doesn't have the preamble TopText.
+
+Functions:
+    ordinal_day(date_time: datetime.datetime) -> str:
+        Takes a datetime object and returns an ordinal day ('23rd' or '12th', for example) as a string.
+
+    check_top_text(filename: str):
+        Check if the file given by the filename argument has TopText.
+
+    write_top_text(filename: str):
+        Write TopText given by the variables in .env to the file given by the filename argument. WARNING: This will erase all other data in the file.
+
+    write_entry(entry_text: str, filename='Activity Log'):
+        Take some body text for an entry and write it the the file specified by filename. By default, it's 'Activity Log'.
+
+    take_multiline_input() -> str:
+        Give the user a prompt where they can enter multiple lines in the console.
+
+"""
+
 import os
 from datetime import datetime
 import markdown
@@ -5,7 +35,7 @@ from decouple import config
 
 
 def ordinal_day(date_time: datetime) -> str:
-    """Take a datetime object and return an ordinal day ('23rd' or '12th', for example)."""
+    """Take a datetime object and return an ordinal day ('23rd' or '12th', for example) as a string."""
     day = str(date_time.day)
 
     # Get day of month extension
@@ -22,8 +52,24 @@ def ordinal_day(date_time: datetime) -> str:
 
 
 class Entry:
-    """A class where each instance is an entry in the activity log."""
+    """The class for entries in the Activity Log. Each instance is an individual entry.
+
+    Methods:
+        create_html() -> str:
+            Return a HTML representation of the entry.
+
+        create_markdown() -> str:
+            Return a markdown representation of the entry.
+
+    """
+
     def __init__(self, body_text: str):
+        """Create body_text and date_and_time attributes.
+
+        Arguments:
+            body_text:
+                A string representation of the main text of the desired entry.
+        """
         self.body_text = body_text.expandtabs(4)  # Replace tabs with 4 spaces
 
         now = datetime.now()
@@ -56,7 +102,20 @@ class Entry:
 
 
 class TopText:
-    """A class where there should only be one instance, which is the text at the top of the Activity Log containing all the necessary information."""
+    """The class for the preamble top text of the Activity Log.
+
+    There should be one instance, from which you can call create_html() and create_markdown() to get the HTML and markdown versions of the top text.
+    The variables can be adjusted in the .env file.
+
+    Methods:
+        create_html() -> str:
+            Return string for the HTML Activity Log top text.
+
+        create_markdown() -> str:
+            Return string for the markdown Activity Log top text.
+
+    """
+
     style_sheet = '''    <style>
         body {font-family: Arial, Helvetica, sans-serif;}
         div.top-text {
@@ -90,6 +149,7 @@ class TopText:
     </style>'''
 
     def __init__(self):
+        """Get the variables for TopText from the .env file."""
         self.learner_name = config('LEARNER_NAME')
         self.learner_number = config('LEARNER_NUMBER')
         self.centre_name = config('CENTRE_NAME')
@@ -99,8 +159,8 @@ class TopText:
         self.teacher_assessor = config('TEACHER_ASSESSOR')
         self.proposed_project_title = config('PROPOSED_PROJECT_TITLE')
 
-    def create_html(self):
-        """Create the top text for the HTML Activity Log."""
+    def create_html(self) -> str:
+        """Return string for the HTML Activity Log top text."""
         return f'''<head>
     <title>Activity Log</title>
     {TopText.style_sheet}
@@ -150,8 +210,8 @@ class TopText:
 
 <div class="entry-list">\n\n\n'''
 
-    def create_markdown(self):
-        """Create the top text for the markdown Activity Log."""
+    def create_markdown(self) -> str:
+        """Return string for the markdown Activity Log top text."""
         return f'''# Activity Log
 
 Learner Name: {self.learner_name}
@@ -172,14 +232,17 @@ Proposed project title: {self.proposed_project_title}\n\n---\n\n\n'''
 
 
 class NoTopTextError(Exception):
-    """A simple class to create a custom error if the file being written to doesn't have top text.
+    """A simple class to create a custom exception if the file being written to doesn't have TopText."""
 
-This is just to handle this particular error and prompt the user to create the top text."""
     pass
 
 
 def check_top_text(filename: str):
-    """Checks if a given file has the top text. Raises NoTopTextError if not. Creates an empty file and raises error if file doesn't exist."""
+    """Check if the file given by the filename argument has TopText.
+
+    If the file doesn't have the TopText, raise NoTopTextError.
+    If the file doesn't exist, create an empty file and raise NoTopTextError.
+    """
     if not os.path.isfile(filename):
         f = open(filename, 'x')
         f.close()
@@ -190,9 +253,10 @@ def check_top_text(filename: str):
 
 
 def write_top_text(filename: str):
-    """Write the top text given by the variables in .env to filename. Only accepts .md or .html files.
+    """Write TopText given by the variables in .env to the file given by the filename argument. WARNING: This will erase all other data in the file.
 
-Warning: Will erase all other data in that file."""
+    This function only accepts .md or .html files and writes the corresponding format of TopText to the given file. If the file is not .md or .html, the function will do nothing.
+    """
     top_text = TopText()
 
     _, ext = os.path.splitext(filename)
@@ -205,10 +269,11 @@ Warning: Will erase all other data in that file."""
             f.write(top_text.create_html())
 
 
-def write_entry(entry_text: str, filename: str = 'Activity Log'):
-    """Take an entry body text and an optional filename and write the entry with the current date and time to filename.md and filename.html in the respective formats.
+def write_entry(entry_text: str, filename='Activity Log'):
+    """Take some body text for an entry and write it the the file specified by filename. By default, it's 'Activity Log'.
 
-If no filename is specified, 'Activity Log' is used."""
+    Filename should be passed with no extension. The function will write the entry to the .md and .html versions of the file.
+    """
     entry = Entry(entry_text)
 
     # Get rid of . if filename has it
@@ -234,6 +299,7 @@ If no filename is specified, 'Activity Log' is used."""
 
 
 def take_multiline_input() -> str:
+    """Give the user a prompt where they can enter multiple lines in the console."""
     lines = []
 
     print('This is a multiline input. You can use as many lines as you want. You cannot edit a line after you have pressed enter.\n\nWhen you want to finish, simply type "done" on a line on its own. Press Ctrl+C at any time to cancel the entry and exit.\n')

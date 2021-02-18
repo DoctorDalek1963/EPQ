@@ -1,5 +1,19 @@
 #!/usr/bin/env python
 
+"""This is the module that holds the GUI for the Activity Logger.
+
+Classes:
+    ActivityLoggerGUI:
+        The class for the GUI for the Activity Logger.
+
+        You have to create an instance (no arguments taken) and then call show() on it to show the window.
+
+Functions:
+    show_window():
+        Create an instance of the GUI window and show it. Takes no arguments.
+
+"""
+
 from PyQt5 import QtWidgets, QtCore
 from PyQt5.QtWidgets import QMainWindow, QApplication, QVBoxLayout, QHBoxLayout, QWidget, QShortcut
 from PyQt5.QtGui import QKeySequence
@@ -9,7 +23,14 @@ import threading
 
 
 class ActivityLoggerGUI(QMainWindow):
+    """The class for the GUI for the Activity Logger.
+
+    Subclasses PyQt5.QtWidgets.QMainWindow. It has no public methods or attributes and only has __init__().
+    You have to create an instance (no arguments taken) and then call show() on it to show the window.
+    """
+
     def __init__(self):
+        """Create an instance of the Activity Logger GUI. Takes no arguments."""
         super(ActivityLoggerGUI, self).__init__()
 
         # A boolean to see if the window exists. Used to close properly
@@ -74,6 +95,7 @@ class ActivityLoggerGUI(QMainWindow):
         self._button_enable_thread.start()
 
     def _arrange_widgets(self):
+        """Arrange the attributes created by __init__() nicely."""
         self._vbox.addWidget(self._info)
         self._vbox.addWidget(self._link)
         self._vbox.addWidget(self._text_box)
@@ -89,26 +111,31 @@ class ActivityLoggerGUI(QMainWindow):
         self._vbox.addLayout(self._hbox)
 
     def _write_entry(self):
+        """Write the contents of the text box to the HTML and markdown files for the Activity Log."""
         self._entry_text = self._text_box.toPlainText()
         library.write_entry(self._entry_text)
         self._text_box.setText('')
 
     def _check_text_box(self):
+        """Check the contents of the text box and activate the write button if it contains text."""
         if self._text_box.toPlainText() != '':
             self._write_button.setEnabled(True)
         else:
             self._write_button.setEnabled(False)
 
     def _button_enable_loop(self):
+        """Loop continually to check the text box. This function must be run in a thread."""
         while self._exists:
             self._check_text_box()
 
     def _close_properly(self):
-        self.close()
+        """Set the _exists boolean to false to end the thread and then close the window."""
         self._exists = False
+        self.close()
 
 
 def show_window():
+    """Create an instance of ActivityLoggerGUI and show it. Terminate the program when the user exits the window."""
     app = QApplication(sys.argv)
     window = ActivityLoggerGUI()
     window.show()

@@ -5,7 +5,7 @@ import shutil
 import subprocess
 
 
-def compile_acca(gui=True):
+def compile_logger(gui=True):
     """Compile the Activity Logger using pyinsyaller.
 
 This function takes one argument, gui, which is true by default. If it's true, this function will compile the GUI version of the logger, if false, it will compile the command line version."""
@@ -26,4 +26,4 @@ This function takes one argument, gui, which is true by default. If it's true, t
 
 
 if __name__ == "__main__":
-    compile_acca()
+    compile_logger()

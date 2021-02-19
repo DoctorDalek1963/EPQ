@@ -2,7 +2,7 @@
 
 Classes:
     Entry:
-        Words
+        The class for entries in the Activity Log. Each instance is an individual entry.
 
     TopText:
         The class for the preamble top text of the Activity Log.

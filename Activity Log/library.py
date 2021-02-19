@@ -240,7 +240,7 @@ class NoTopTextError(Exception):
 def check_top_text(filename: str):
     """Check if the file given by the filename argument has TopText.
 
-    If the file doesn't have the TopText, raise NoTopTextError.
+    If the file doesn't have TopText, raise NoTopTextError.
     If the file doesn't exist, create an empty file and raise NoTopTextError.
     """
     if not os.path.isfile(filename):

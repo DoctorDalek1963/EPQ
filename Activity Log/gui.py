@@ -52,8 +52,8 @@ class ActivityLoggerGUI(QMainWindow):
         self._info.setAlignment(QtCore.Qt.AlignCenter)
 
         self._link = QtWidgets.QLabel(self)
-        self._link.setText(f'<a href="{self._markdown_link}"><span style="color: black; '
-                           f'text-decoration: none;">[Click this]({self._markdown_link})</span></a> '
+        self._link.setText(f'<a href="{self._markdown_link}" style="color: black; '
+                           f'text-decoration: none;">[Click this]({self._markdown_link})</a> '
                            'to see everything you can do with markdown.')
         self._link.setAlignment(QtCore.Qt.AlignCenter)
         self._link.setOpenExternalLinks(True)

@@ -150,14 +150,14 @@ class TopText:
 
     def __init__(self):
         """Get the variables for TopText from the .env file."""
-        self.learner_name = config('LEARNER_NAME')
-        self.learner_number = config('LEARNER_NUMBER')
-        self.centre_name = config('CENTRE_NAME')
-        self.centre_number = config('CENTRE_NUMBER')
-        self.unit_name = config('UNIT_NAME')
-        self.unit_number = config('UNIT_NUMBER')
-        self.teacher_assessor = config('TEACHER_ASSESSOR')
-        self.proposed_project_title = config('PROPOSED_PROJECT_TITLE')
+        self.learner_name = config('LEARNER_NAME', default='')
+        self.learner_number = config('LEARNER_NUMBER', default='')
+        self.centre_name = config('CENTRE_NAME', default='')
+        self.centre_number = config('CENTRE_NUMBER', default='')
+        self.unit_name = config('UNIT_NAME', default='')
+        self.unit_number = config('UNIT_NUMBER', default='')
+        self.teacher_assessor = config('TEACHER_ASSESSOR', default='')
+        self.proposed_project_title = config('PROPOSED_PROJECT_TITLE', default='')
 
     def create_html(self) -> str:
         """Return string for the HTML Activity Log top text."""

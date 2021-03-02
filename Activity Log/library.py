@@ -23,9 +23,6 @@ Functions:
     write_entry(entry_text: str, filename='Activity Log'):
         Take some body text for an entry and write it the the file specified by filename. By default, it's 'Activity Log'.
 
-    take_multiline_input() -> str:
-        Give the user a prompt where they can enter multiple lines in the console.
-
 """
 
 import os
@@ -296,19 +293,3 @@ def write_entry(entry_text: str, filename='Activity Log'):
 
     with open(html_file, 'a') as f:
         f.write(entry.create_html())
-
-
-def take_multiline_input(prompt='> ') -> str:
-    """Give the user a prompt where they can enter multiple lines in the console."""
-    lines = []
-
-    print('This is a multiline input. You can use as many lines as you want. You cannot edit a line after you have pressed enter.\n\nWhen you want to finish, simply type "done" on a line on its own. Press Ctrl+C at any time to cancel the entry and exit.\n')
-
-    while True:
-        line = input(prompt)
-        if line == 'done':
-            break  # Break out of the loop to concat all the other lines
-        else:
-            lines.append(line)
-
-    return '\n'.join(lines)

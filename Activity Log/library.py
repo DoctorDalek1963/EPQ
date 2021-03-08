@@ -241,7 +241,7 @@ def check_top_text(filename: str):
     If the file doesn't exist, create an empty file and raise NoTopTextError.
     """
     if not os.path.isfile(filename):
-        _ = open(filename, 'x')
+        open(filename, 'x')
 
     with open(filename, 'r') as f:
         if 'Activity Log' not in f.read():

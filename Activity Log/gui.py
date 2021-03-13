@@ -20,6 +20,9 @@ from PyQt5.QtGui import QKeySequence
 import sys
 import library
 import threading
+import webbrowser
+import os
+from decouple import config
 
 
 class ActivityLoggerGUI(QMainWindow):
@@ -71,6 +74,15 @@ class ActivityLoggerGUI(QMainWindow):
         self._write_shortcut = QShortcut(QKeySequence("Ctrl+Return"), self)
         self._write_shortcut.activated.connect(self._write_entry)
 
+        self._open_html_button = QtWidgets.QPushButton(self)
+        self._open_html_button.setText('Open HTML file')
+
+        # This lambda is insane. The main ternary here just sets the filename to the default if it's an empty string
+        self._open_html_button.clicked.connect(lambda: webbrowser.open_new_tab(
+            f"{os.getcwd()}/{x if (x := os.path.splitext(config('FILENAME', default=library.default_filename))[0]) != '' else library.default_filename}.html"))
+
+        self._open_html_button.setToolTip('Open the HTML version of the Activity Log.')
+
         self._exit_button = QtWidgets.QPushButton(self)
         self._exit_button.setText('Exit')
         self._exit_button.clicked.connect(self._close_properly)
@@ -104,6 +116,7 @@ class ActivityLoggerGUI(QMainWindow):
         self._vbox.setSpacing(20)
 
         self._hbox.addWidget(self._write_button)
+        self._hbox.addWidget(self._open_html_button)
         self._hbox.addWidget(self._exit_button)
         self._hbox.setSpacing(20)
 

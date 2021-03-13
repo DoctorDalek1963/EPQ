@@ -30,6 +30,8 @@ from datetime import datetime
 import markdown
 from decouple import config
 
+default_filename = 'Activity Log'
+
 
 def ordinal_day(date_time: datetime) -> str:
     """Take a datetime object and return an ordinal day ('23rd' or '12th', for example) as a string."""
@@ -268,8 +270,6 @@ def write_top_text(filename: str):
 def write_entry(entry_text: str):
     """Take some body text for an entry and write it the the file specified by the FILENAME value in `.env`. By default it's 'Activity Log'."""
     entry = Entry(entry_text)
-
-    default_filename = 'Activity Log'
 
     # Get rid of . if filename has it
     filename, _ = os.path.splitext(config('FILENAME', default=default_filename))

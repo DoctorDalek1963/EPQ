@@ -20,8 +20,8 @@ Functions:
     write_top_text(filename: str):
         Write TopText given by the variables in .env to the file given by the filename argument. WARNING: This will erase all other data in the file.
 
-    write_entry(entry_text: str, filename='Activity Log'):
-        Take some body text for an entry and write it the the file specified by filename. By default, it's 'Activity Log'.
+    write_entry(entry_text: str):
+        Take some body text for an entry and write it to the file specified by the FILENAME value in `.env`. By default it's 'Activity Log'.
 
 """
 
@@ -265,15 +265,17 @@ def write_top_text(filename: str):
             f.write(top_text.create_html())
 
 
-def write_entry(entry_text: str, filename='Activity Log'):
-    """Take some body text for an entry and write it the the file specified by filename. By default, it's 'Activity Log'.
-
-    Filename should be passed with no extension. The function will write the entry to the .md and .html versions of the file.
-    """
+def write_entry(entry_text: str):
+    """Take some body text for an entry and write it the the file specified by the FILENAME value in `.env`. By default it's 'Activity Log'."""
     entry = Entry(entry_text)
 
+    default_filename = 'Activity Log'
+
     # Get rid of . if filename has it
-    filename, _ = os.path.splitext(filename)
+    filename, _ = os.path.splitext(config('FILENAME', default=default_filename))
+    if filename == '':
+        filename = default_filename
+
     md_file = filename + '.md'
     html_file = filename + '.html'
 

@@ -76,12 +76,11 @@ class ActivityLoggerGUI(QMainWindow):
 
         self._open_html_button = QtWidgets.QPushButton(self)
         self._open_html_button.setText('Open HTML file')
-
-        # This lambda is insane. The main ternary here just sets the filename to the default if it's an empty string
-        self._open_html_button.clicked.connect(lambda: webbrowser.open_new_tab(
-            f"{os.getcwd()}/{x if (x := os.path.splitext(config('FILENAME', default=library.default_filename))[0]) != '' else library.default_filename}.html"))
-
+        self._open_html_button.clicked.connect(lambda: webbrowser.open_new_tab(f"{os.getcwd()}/{self._get_html_filename()}"))
         self._open_html_button.setToolTip('Open the HTML version of the Activity Log.')
+
+        if not os.path.isfile(self._get_html_filename()):
+            self._open_html_button.setEnabled(False)
 
         self._exit_button = QtWidgets.QPushButton(self)
         self._exit_button.setText('Exit')
@@ -128,6 +127,17 @@ class ActivityLoggerGUI(QMainWindow):
         self._entry_text = self._text_box.toPlainText()
         library.write_entry(self._entry_text)
         self._text_box.setText('')
+        self._open_html_button.setEnabled(True)  # Enable the button because now the file definitely exists
+
+    @staticmethod
+    def _get_html_filename():
+        """Get the FILENAME value from .env."""
+        filename = os.path.splitext(config('FILENAME', default=library.default_filename))[0]
+
+        if filename == '':
+            filename = library.default_filename
+
+        return filename + '.html'
 
     def _check_text_box(self):
         """Check the contents of the text box and activate the write button if it contains text."""

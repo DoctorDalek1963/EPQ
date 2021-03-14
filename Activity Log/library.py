@@ -14,6 +14,9 @@ Functions:
     ordinal_day(date_time: datetime.datetime) -> str:
         Takes a datetime object and returns an ordinal day ('23rd' or '12th', for example) as a string.
 
+    get_html_filename() -> str:
+        Get the FILENAME value from .env, make sure it's valid, and return it with '.html' on the end.
+
     check_top_text(filename: str):
         Check if the file given by the filename argument has TopText.
 
@@ -236,6 +239,22 @@ class NoTopTextError(Exception):
     pass
 
 
+def get_html_filename() -> str:
+    """Get the FILENAME value from .env, make sure it's valid, and return it with '.html' on the end."""
+    filename = config('FILENAME', default=default_filename)
+
+    if filename == '':
+        filename = default_filename
+
+    # This will only remove '.html' or '.md' extensions, allowing filenames with dots in them
+    # The .lower() method allows the user to write something like '.hTMl' if they really wanted to,
+    # but it would still get removed
+    if filename.lower().endswith('.html') or filename.lower().endswith('.md'):
+        filename = os.path.splitext(filename)[0]
+
+    return filename + '.html'
+
+
 def check_top_text(filename: str):
     """Check if the file given by the filename argument has TopText.
 
@@ -271,10 +290,7 @@ def write_entry(entry_text: str):
     """Take some body text for an entry and write it the the file specified by the FILENAME value in `.env`. By default it's 'Activity Log'."""
     entry = Entry(entry_text)
 
-    # Get rid of . if filename has it
-    filename, _ = os.path.splitext(config('FILENAME', default=default_filename))
-    if filename == '':
-        filename = default_filename
+    filename = get_html_filename()
 
     md_file = filename + '.md'
     html_file = filename + '.html'

@@ -22,7 +22,6 @@ import library
 import threading
 import webbrowser
 import os
-from decouple import config
 
 
 class ActivityLoggerGUI(QMainWindow):
@@ -68,7 +67,7 @@ class ActivityLoggerGUI(QMainWindow):
         self._write_button.setText('Write entry to file')
         self._write_button.setEnabled(False)
         self._write_button.clicked.connect(self._write_entry)
-        self._write_button.setToolTip('Write the contents of the text box to the HTML and markdown files. <br><b>(Ctrl + Enter)</b>')
+        self._write_button.setToolTip('Write the contents of the text box to the HTML and markdown files.<br><b>(Ctrl + Enter)</b>')
 
         # This is a shortcut for the write entry button
         self._write_shortcut = QShortcut(QKeySequence('Ctrl+Return'), self)
@@ -76,10 +75,10 @@ class ActivityLoggerGUI(QMainWindow):
 
         self._open_html_button = QtWidgets.QPushButton(self)
         self._open_html_button.setText('Open HTML file')
-        self._open_html_button.clicked.connect(lambda: webbrowser.open_new_tab(f"{os.getcwd()}/{self._get_html_filename()}"))
-        self._open_html_button.setToolTip('Open the HTML version of the Activity Log. <br><b>(Ctrl + O)</b>')
+        self._open_html_button.clicked.connect(lambda: webbrowser.open_new_tab(f"{os.getcwd()}/{library.get_html_filename()}"))
+        self._open_html_button.setToolTip('Open the HTML version of the Activity Log.<br><b>(Ctrl + O)</b>')
 
-        if not os.path.isfile(self._get_html_filename()):
+        if not os.path.isfile(library.get_html_filename()):
             self._open_html_button.setEnabled(False)
 
         # This is a shortcut for the open html button
@@ -89,7 +88,7 @@ class ActivityLoggerGUI(QMainWindow):
         self._exit_button = QtWidgets.QPushButton(self)
         self._exit_button.setText('Exit')
         self._exit_button.clicked.connect(self._close_properly)
-        self._exit_button.setToolTip('Exit the program and discard the contents of the text box. <br><b>(Ctrl + Q)</b>')
+        self._exit_button.setToolTip('Exit the program and discard the contents of the text box.<br><b>(Ctrl + Q)</b>')
 
         # This is a shortcut for the exit button
         self._exit_shortcut = QShortcut(QKeySequence('Ctrl+Q'), self)
@@ -132,16 +131,6 @@ class ActivityLoggerGUI(QMainWindow):
         library.write_entry(self._entry_text)
         self._text_box.setText('')
         self._open_html_button.setEnabled(True)  # Enable the button because now the file definitely exists
-
-    @staticmethod
-    def _get_html_filename():
-        """Get the FILENAME value from .env."""
-        filename = os.path.splitext(config('FILENAME', default=library.default_filename))[0]
-
-        if filename == '':
-            filename = library.default_filename
-
-        return filename + '.html'
 
     def _check_text_box(self):
         """Check the contents of the text box and activate the write button if it contains text."""

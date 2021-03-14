@@ -68,28 +68,32 @@ class ActivityLoggerGUI(QMainWindow):
         self._write_button.setText('Write entry to file')
         self._write_button.setEnabled(False)
         self._write_button.clicked.connect(self._write_entry)
-        self._write_button.setToolTip('Write the contents of the text box to the HTML and markdown files. <b>(Ctrl + Enter)</b>')
+        self._write_button.setToolTip('Write the contents of the text box to the HTML and markdown files. <br><b>(Ctrl + Enter)</b>')
 
         # This is a shortcut for the write entry button
-        self._write_shortcut = QShortcut(QKeySequence("Ctrl+Return"), self)
-        self._write_shortcut.activated.connect(self._write_entry)
+        self._write_shortcut = QShortcut(QKeySequence('Ctrl+Return'), self)
+        self._write_shortcut.activated.connect(self._write_button.click)
 
         self._open_html_button = QtWidgets.QPushButton(self)
         self._open_html_button.setText('Open HTML file')
         self._open_html_button.clicked.connect(lambda: webbrowser.open_new_tab(f"{os.getcwd()}/{self._get_html_filename()}"))
-        self._open_html_button.setToolTip('Open the HTML version of the Activity Log.')
+        self._open_html_button.setToolTip('Open the HTML version of the Activity Log. <br><b>(Ctrl + O)</b>')
 
         if not os.path.isfile(self._get_html_filename()):
             self._open_html_button.setEnabled(False)
 
+        # This is a shortcut for the open html button
+        self._open_html_shortcut = QShortcut(QKeySequence('Ctrl+O'), self)
+        self._open_html_shortcut.activated.connect(self._open_html_button.click)
+
         self._exit_button = QtWidgets.QPushButton(self)
         self._exit_button.setText('Exit')
         self._exit_button.clicked.connect(self._close_properly)
-        self._exit_button.setToolTip('Exit the program and discard the contents of the text box. <b>(Ctrl + Q)</b>')
+        self._exit_button.setToolTip('Exit the program and discard the contents of the text box. <br><b>(Ctrl + Q)</b>')
 
         # This is a shortcut for the exit button
-        self._exit_shortcut = QShortcut(QKeySequence("Ctrl+Q"), self)
-        self._exit_shortcut.activated.connect(self._close_properly)
+        self._exit_shortcut = QShortcut(QKeySequence('Ctrl+Q'), self)
+        self._exit_shortcut.activated.connect(self._exit_button.click)
 
         # ===== Arrange all widgets properly
 

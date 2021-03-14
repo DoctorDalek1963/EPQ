@@ -75,10 +75,10 @@ class ActivityLoggerGUI(QMainWindow):
 
         self._open_html_button = QtWidgets.QPushButton(self)
         self._open_html_button.setText('Open HTML file')
-        self._open_html_button.clicked.connect(lambda: webbrowser.open_new_tab(f"{os.getcwd()}/{library.get_html_filename()}"))
+        self._open_html_button.clicked.connect(lambda: webbrowser.open_new_tab(f"{os.getcwd()}/{library.get_filename_no_extension()}.html"))
         self._open_html_button.setToolTip('Open the HTML version of the Activity Log.<br><b>(Ctrl + O)</b>')
 
-        if not os.path.isfile(library.get_html_filename()):
+        if not os.path.isfile(library.get_filename_no_extension() + '.html'):
             self._open_html_button.setEnabled(False)
 
         # This is a shortcut for the open html button

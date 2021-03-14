@@ -14,8 +14,8 @@ Functions:
     ordinal_day(date_time: datetime.datetime) -> str:
         Takes a datetime object and returns an ordinal day ('23rd' or '12th', for example) as a string.
 
-    get_html_filename() -> str:
-        Get the FILENAME value from .env, make sure it's valid, and return it with '.html' on the end.
+    get_filename_no_extension() -> str:
+        Get the FILENAME value from .env, make sure it's valid, and return it with no extension.
 
     check_top_text(filename: str):
         Check if the file given by the filename argument has TopText.
@@ -239,8 +239,8 @@ class NoTopTextError(Exception):
     pass
 
 
-def get_html_filename() -> str:
-    """Get the FILENAME value from .env, make sure it's valid, and return it with '.html' on the end."""
+def get_filename_no_extension() -> str:
+    """Get the FILENAME value from .env, make sure it's valid, and return it with no extension."""
     filename = config('FILENAME', default=default_filename)
 
     if filename == '':
@@ -252,7 +252,7 @@ def get_html_filename() -> str:
     if filename.lower().endswith('.html') or filename.lower().endswith('.md'):
         filename = os.path.splitext(filename)[0]
 
-    return filename + '.html'
+    return filename
 
 
 def check_top_text(filename: str):
@@ -290,7 +290,7 @@ def write_entry(entry_text: str):
     """Take some body text for an entry and write it the the file specified by the FILENAME value in `.env`. By default it's 'Activity Log'."""
     entry = Entry(entry_text)
 
-    filename = get_html_filename()
+    filename = get_filename_no_extension()
 
     md_file = filename + '.md'
     html_file = filename + '.html'

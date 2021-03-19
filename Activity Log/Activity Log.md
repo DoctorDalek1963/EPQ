@@ -41,3 +41,12 @@ Butler mainly talked about how the category of 'woman' is blurry and ill-defined
 
 There were some lovely ideas just in that first section and I'd love to see where Butler takes them. It's just a shame that I have to read practically every paragraph twice to understand what she's trying to say.
 
+### Friday 19th March 2021, 10:07 pm
+
+I took a break from my EPQ, mainly due to COVID-lockdown-induced sub-par mental health, but I'm back.
+
+I read chapter 1 section 2 of *Gender Trouble*, in which Butler talks about the blurriness of the concept of biological sex. It is ill-defined and hard to use for real things. It is "juridical", as she puts it. Sex is a legal construction used to constrain people in boxes and make them easier to manage. It is often described as binary but very rarely actually is.
+
+Butler suggests in this section that sex actually results from gender, not the other way around. Gender is socially constructed. It is also used, claims Butler, to establish a binary framing of sex as "prediscursive, prior to culture, \[and\] a politically neutral surface *on which* culture acts." From what I understand, Butler is claiming that sex, which is used as a basis for discrimination, is culturally derived from the socially constructed gender.
+
+That is an *incredibly* interesting view, and I'm really looking forward to seeing where she takes it.

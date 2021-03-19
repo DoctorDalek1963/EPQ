@@ -19,7 +19,6 @@ from PyQt5.QtWidgets import QMainWindow, QApplication, QVBoxLayout, QHBoxLayout,
 from PyQt5.QtGui import QKeySequence
 import sys
 import library
-import threading
 import webbrowser
 import os
 
@@ -62,6 +61,8 @@ class ActivityLoggerGUI(QMainWindow):
 
         self._text_box = QtWidgets.QTextEdit(self)
         self._text_box.setPlaceholderText('Type your Activity Log entry...')
+        # This line will enable the write button when there is text in the text box
+        self._text_box.textChanged.connect(lambda: self._write_button.setEnabled(bool(self._text_box.toPlainText())))
 
         self._write_button = QtWidgets.QPushButton(self)
         self._write_button.setText('Write entry to file')
@@ -104,10 +105,6 @@ class ActivityLoggerGUI(QMainWindow):
         self._central_widget.setLayout(self._vbox)
         self.setCentralWidget(self._central_widget)
 
-        # Start a thread to check the text box and enable the write button if it's got text in it
-        self._button_enable_thread = threading.Thread(target=self._button_enable_loop)
-        self._button_enable_thread.start()
-
     def _arrange_widgets(self):
         """Arrange the attributes created by __init__() nicely."""
         self._vbox.addWidget(self._info)
@@ -131,18 +128,6 @@ class ActivityLoggerGUI(QMainWindow):
         library.write_entry(self._entry_text)
         self._text_box.setText('')
         self._open_html_button.setEnabled(True)  # Enable the button because now the file definitely exists
-
-    def _check_text_box(self):
-        """Check the contents of the text box and activate the write button if it contains text."""
-        if self._text_box.toPlainText() != '':
-            self._write_button.setEnabled(True)
-        else:
-            self._write_button.setEnabled(False)
-
-    def _button_enable_loop(self):
-        """Loop continually to check the text box. This function must be run in a thread."""
-        while self._exists:
-            self._check_text_box()
 
     def _close_properly(self):
         """Set the _exists boolean to false to end the thread and then close the window."""

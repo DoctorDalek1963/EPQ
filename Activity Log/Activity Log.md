@@ -50,3 +50,13 @@ I read chapter 1 section 2 of *Gender Trouble*, in which Butler talks about the 
 Butler suggests in this section that sex actually results from gender, not the other way around. Gender is socially constructed. It is also used, claims Butler, to establish a binary framing of sex as "prediscursive, prior to culture, \[and\] a politically neutral surface *on which* culture acts." From what I understand, Butler is claiming that sex, which is used as a basis for discrimination, is culturally derived from the socially constructed gender.
 
 That is an *incredibly* interesting view, and I'm really looking forward to seeing where she takes it.
+
+### Tuesday 23rd March 2021, 10:42 pm
+
+I read chapter 1 section 3 of *Gender Trouble*. In it, Butler talks mainly about the differing views of Simone de Beauvoir and Luce Irigaray on what gender is and how it is talked about in society.
+
+Beauvoir wrote *The Second Sex*, which was already on my reading list, but I've now decided I want to read it straight after *Gender Trouble*. In Butler's account, Beauvoir argues that men are considered the default in society, and are thus not specially marked in discourse and culture; women are considered the Sartrian *Other*, and are thus explicitly marked  as *not men*, and therefore *different* in practically everything.
+
+Irigaray claims that society is *phallogocentric* (only able to talk from the masculine perspective) and women are not marked as the *Other*, but rather, they are not marked at all. Instead, they are completely excluded from the hegemonic phallogocentric discourse of society by the very nature of the language we use. If society can't properly talk about women (because languages were developed by patriarchal societies and cultures), then they can't properly *think* or philosophise about women.
+
+There was also a bit near the end of the section where Butler seemed to say that Beauvoir was arguing that men could practically transcend their bodies. The masculine body is considered the default and is thus equated with "universal personhood". This allows men to metaphorically disavow their physical bodies and attain real freedom. Women, on the other hand, are considered different from the norm, and are thus bound and almost enslaved by their physical bodies, unable to truly be free so long as *woman* is considered *different*.

@@ -12,6 +12,28 @@ import os
 import shutil
 import subprocess
 
+env_text = '''# Any value with spaces should be wrapped in "double quotes"
+
+LEARNER_NAME=
+LEARNER_NUMBER=
+CENTRE_NAME=
+CENTRE_NUMBER=
+UNIT_NAME=
+UNIT_NUMBER=
+TEACHER_ASSESSOR=
+PROPOSED_PROJECT_TITLE=
+
+# This is "Activity Log" if not set
+FILENAME='''
+
+readme_text = '''# Activity Logger
+
+This is a Python project to make writing an EPQ Activity Log a bit easier.
+
+To use this yourself, you need to change the values in `.env`. The format should be self-explanatory.
+
+If you're on Windows, you can just run `Activity_Logger.exe`. If you're on MacOS or Linux, you need to run the GUI on the command line. First run `pip install -r requirements.txt` and then run `python gui.py`.'''
+
 
 def compile_logger(gui=True):
     """Compile the Activity Logger using pyinstaller.
@@ -23,17 +45,34 @@ def compile_logger(gui=True):
     # Get filename from gui boolean
     filename = 'gui.py' if gui else 'cli.py'
 
-    if os.path.isfile('Activity_Logger.exe'):
-        os.remove('Activity_Logger.exe')
+    if os.path.isfile('Activity_Logger.zip'):
+        os.remove('Activity_Logger.zip')
 
-    subprocess.call(f'pyinstaller {filename} -wF -n Activity_Logger --distpath .', shell=True)
+    # Create temporary directory to hold everything
+    os.mkdir('compile_temp')
+
+    # Copy files to temporary directory
+    shutil.copy('gui.py', 'compile_temp/')
+    shutil.copy('cli.py', 'compile_temp/')
+    shutil.copy('library.py', 'compile_temp/')
+    shutil.copy('requirements.txt', 'compile_temp/')
+
+    # Create other files in temporary directory
+    open('compile_temp/.env', 'w').write(env_text)
+    open('compile_temp/README.md', 'w').write(readme_text)
+
+    subprocess.call(f'pyinstaller {filename} -wF -n Activity_Logger --distpath ./compile_temp', shell=True)
 
     os.remove('Activity_Logger.spec')
 
+    # Zip up compiled program with dependencies
+    shutil.make_archive('Activity_Logger', 'zip', 'compile_temp')
+
+    # Clear and remove unnecessary directories
+    shutil.rmtree('build')
+    shutil.rmtree('compile_temp')
     if os.path.isdir('__pycache__'):
         shutil.rmtree('__pycache__')
-
-    shutil.rmtree('build')
 
 
 if __name__ == "__main__":

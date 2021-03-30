@@ -164,6 +164,7 @@ class TopText:
     def create_html(self) -> str:
         """Return string for the HTML Activity Log top text."""
         return f'''<head>
+    <meta charset="UTF-8">
     <title>Activity Log</title>
     {TopText.style_sheet}
 </head>

@@ -60,3 +60,13 @@ Beauvoir wrote *The Second Sex*, which was already on my reading list, but I've 
 Irigaray claims that society is *phallogocentric* (only able to talk from the masculine perspective) and women are not marked as the *Other*, but rather, they are not marked at all. Instead, they are completely excluded from the hegemonic phallogocentric discourse of society by the very nature of the language we use. If society can't properly talk about women (because languages were developed by patriarchal societies and cultures), then they can't properly *think* or philosophise about women.
 
 There was also a bit near the end of the section where Butler seemed to say that Beauvoir was arguing that men could practically transcend their bodies. The masculine body is considered the default and is thus equated with "universal personhood". This allows men to metaphorically disavow their physical bodies and attain real freedom. Women, on the other hand, are considered different from the norm, and are thus bound and almost enslaved by their physical bodies, unable to truly be free so long as *woman* is considered *different*.
+### Tuesday 30th March 2021, 10:17 pm
+
+In Chapter 1 Section 4 of *Gender Trouble*, Butler talks about the failings of Irigaray's phallogocentrism, pointing out that gender oppression is seen across practically all cultures, so it can't really be blamed on one, Western-centric theory, and it's almost (epistemologically) imperialist to suggest as such.
+
+She then goes on to talk about various forms of oppression and the impossibility of trying to rank them. They are all inextricably linked and no one form of oppression can properly be tackled without tackling others.  
+She talks about how suppression of the Sartrian *Other* is only one of many techniques used to oppress women, and it is also used in most forms of oppression.
+
+She then talks about the unity of the category of "women" and its flaws. The category of "women" is not united, and Butler seems to suggest that it needn't be. She talks about one of the major flaws of coalitional politics being that it assumes unity as an end goal. Butler seems to advocate for an almost anarchistic coalitional discourse, where nothing is presumed to be the eventual outcome, and all voices and ideas are expressed freely. She suggests that power relations need to be addressed before any coalition like this could feasably happen. Of course, no oppressed group could speak freely in discourse while still being oppressed.
+
+She then talks about how the presumption of unity just slows down real political action. The identity of an oppressed group doesn't really matter, as long as the group can cohesively work against its oppressors.

@@ -35,21 +35,21 @@ I just watched the Philosophy Tube video *[Identity: A Trans Coming Out Story](h
 
 ### Wednesday 10th February 2021, 9:55 PM
 
-I read the first section of Chapter 1 of *Gender Trouble* by Judith Butler. It's incredibly dense and hard going, especially for someone who doesn't read much academia normally. She kept using words like *juridical* and *fictive*, which seemed unnecessarily opaque. Anyway, once I managed to parse it, the content was very interesting.
+I read the first section of Chapter 1 of *Gender Trouble* by Judith Butler. It's incredibly dense and hard going, especially for someone who doesn't read much academia normally. They kept using words like *juridical* and *fictive*, which seemed unnecessarily opaque. Anyway, once I managed to parse it, the content was very interesting.
 
 Butler mainly talked about how the category of 'woman' is blurry and ill-defined. It is a category that claims to represent a group of people but necessarily fails at doing that properly, as all identity politics must. Humans cannot be easily sorted into neat little categories. Every individual is unique and has their own, unique identity. As such, no one category can accurately claim to represent any whole group of people. There were some allusions near the end of the section to the idea that the concept of 'woman' merely serves to reinforce binary, hegemonically masculine gender norms.
 
-There were some lovely ideas just in that first section and I'd love to see where Butler takes them. It's just a shame that I have to read practically every paragraph twice to understand what she's trying to say.
+There were some lovely ideas just in that first section and I'd love to see where Butler takes them. It's just a shame that I have to read practically every paragraph twice to understand what they're trying to say.
 
 ### Friday 19th March 2021, 10:07 pm
 
 I took a break from my EPQ, mainly due to COVID-lockdown-induced sub-par mental health, but I'm back.
 
-I read chapter 1 section 2 of *Gender Trouble*, in which Butler talks about the blurriness of the concept of biological sex. It is ill-defined and hard to use for real things. It is "juridical", as she puts it. Sex is a legal construction used to constrain people in boxes and make them easier to manage. It is often described as binary but very rarely actually is.
+I read chapter 1 section 2 of *Gender Trouble*, in which Butler talks about the blurriness of the concept of biological sex. It is ill-defined and hard to use for real things. It is "juridical", as they put it. Sex is a legal construction used to constrain people in boxes and make them easier to manage. It is often described as binary but very rarely actually is.
 
 Butler suggests in this section that sex actually results from gender, not the other way around. Gender is socially constructed. It is also used, claims Butler, to establish a binary framing of sex as "prediscursive, prior to culture, \[and\] a politically neutral surface *on which* culture acts." From what I understand, Butler is claiming that sex, which is used as a basis for discrimination, is culturally derived from the socially constructed gender.
 
-That is an *incredibly* interesting view, and I'm really looking forward to seeing where she takes it.
+That is an *incredibly* interesting view, and I'm really looking forward to seeing where they take it.
 
 ### Tuesday 23rd March 2021, 10:42 pm
 
@@ -60,13 +60,14 @@ Beauvoir wrote *The Second Sex*, which was already on my reading list, but I've 
 Irigaray claims that society is *phallogocentric* (only able to talk from the masculine perspective) and women are not marked as the *Other*, but rather, they are not marked at all. Instead, they are completely excluded from the hegemonic phallogocentric discourse of society by the very nature of the language we use. If society can't properly talk about women (because languages were developed by patriarchal societies and cultures), then they can't properly *think* or philosophise about women.
 
 There was also a bit near the end of the section where Butler seemed to say that Beauvoir was arguing that men could practically transcend their bodies. The masculine body is considered the default and is thus equated with "universal personhood". This allows men to metaphorically disavow their physical bodies and attain real freedom. Women, on the other hand, are considered different from the norm, and are thus bound and almost enslaved by their physical bodies, unable to truly be free so long as *woman* is considered *different*.
+
 ### Tuesday 30th March 2021, 10:17 pm
 
 In Chapter 1 Section 4 of *Gender Trouble*, Butler talks about the failings of Irigaray's phallogocentrism, pointing out that gender oppression is seen across practically all cultures, so it can't really be blamed on one, Western-centric theory, and it's almost (epistemologically) imperialist to suggest as such.
 
-She then goes on to talk about various forms of oppression and the impossibility of trying to rank them. They are all inextricably linked and no one form of oppression can properly be tackled without tackling others.  
-She talks about how suppression of the Sartrian *Other* is only one of many techniques used to oppress women, and it is also used in most forms of oppression.
+They then go on to talk about various forms of oppression and the impossibility of trying to rank them. They are all inextricably linked and no one form of oppression can properly be tackled without tackling others.  
+They talk about how suppression of the Sartrian *Other* is only one of many techniques used to oppress women, and it is also used in most forms of oppression.
 
-She then talks about the unity of the category of "women" and its flaws. The category of "women" is not united, and Butler seems to suggest that it needn't be. She talks about one of the major flaws of coalitional politics being that it assumes unity as an end goal. Butler seems to advocate for an almost anarchistic coalitional discourse, where nothing is presumed to be the eventual outcome, and all voices and ideas are expressed freely. She suggests that power relations need to be addressed before any coalition like this could feasably happen. Of course, no oppressed group could speak freely in discourse while still being oppressed.
+They then talk about the unity of the category of "women" and its flaws. The category of "women" is not united, and Butler seems to suggest that it needn't be. They talk about one of the major flaws of coalitional politics being that it assumes unity as an end goal. Butler seems to advocate for an almost anarchistic coalitional discourse, where nothing is presumed to be the eventual outcome, and all voices and ideas are expressed freely. They suggest that power relations need to be addressed before any coalition like this could feasably happen. Of course, no oppressed group could speak freely in discourse while still being oppressed.
 
-She then talks about how the presumption of unity just slows down real political action. The identity of an oppressed group doesn't really matter, as long as the group can cohesively work against its oppressors.
+They then talk about how the presumption of unity just slows down real political action. The identity of an oppressed group doesn't really matter, as long as the group can cohesively work against its oppressors.

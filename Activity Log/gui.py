@@ -49,7 +49,7 @@ class ActivityLoggerGUI(QMainWindow):
         self._info = QtWidgets.QLabel(self)
         self._info.setText('This text box supports markdown formatting. For instance, you can do *italics*, **bold text**, \n'
                            '`inline code`, [a link](https://google.com), ![an image stored in a folder](image_folder/example.png),\n'
-                           '![an image stored online](https://link.to/image.png)etc.')
+                           '![an image stored online](https://link.to/image.png), etc.')
         self._info.setAlignment(QtCore.Qt.AlignCenter)
 
         self._link = QtWidgets.QLabel(self)

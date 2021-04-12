@@ -24,7 +24,16 @@ TEACHER_ASSESSOR=
 PROPOSED_PROJECT_TITLE=
 
 # This is "Activity Log" if not set
-FILENAME='''
+FILENAME=
+
+# I'd recommend keeping these both True, but if you
+# don't care about the markdown version, you can
+# set that to False
+# If you set the HTML version to False, then the
+# "Open HTML file" button on the GUI won't work
+CREATE_HTML=True
+CREATE_MARKDOWN=True
+'''
 
 readme_text = '''# Activity Logger
 
@@ -32,7 +41,8 @@ This is a Python project to make writing an EPQ Activity Log a bit easier.
 
 To use this yourself, you need to change the values in `.env`. The format should be self-explanatory.
 
-If you're on Windows, you can just run `Activity_Logger.exe`. If you're on MacOS or Linux, you need to run the GUI on the command line. First run `pip install -r requirements.txt` and then run `python gui.py`.'''
+If you're on MacOS or Linux, you need to run the GUI on the command line. First run `pip install -r requirements.txt` and then run `python gui.py`. Alternatively, you could run `python compile.py` to create a binary executable, although this requires pyinstaller, which can be installed with `pip install pyinstaller`.
+'''
 
 
 def compile_logger(gui=True):

@@ -291,27 +291,28 @@ def write_top_text(filename: str):
             f.write(top_text.create_html())
 
 
+def _write_single_entry(filename: str, config_key: str, method) -> None:
+    """Write an entry to a file. Only do markdown *or* HTML.
+
+    This function should never be called by the user. It is only for use in other library functions.
+    """
+    if config(config_key).lower() == 'false':
+        return  # Don't write to this file
+
+    try:
+        check_top_text(filename)
+    except NoTopTextError:
+        write_top_text(filename)
+
+    with open(filename, 'a') as f:
+        f.write(method())
+
+
 def write_entry(entry_text: str):
     """Take some body text for an entry and write it the the file specified by the FILENAME value in `.env`. By default it's 'Activity Log'."""
     entry = Entry(entry_text)
 
     filename = get_filename_no_extension()
 
-    md_file = filename + '.md'
-    html_file = filename + '.html'
-
-    try:
-        check_top_text(md_file)
-    except NoTopTextError:
-        write_top_text(md_file)
-
-    with open(md_file, 'a') as f:
-        f.write(entry.create_markdown())
-
-    try:
-        check_top_text(html_file)
-    except NoTopTextError:
-        write_top_text(html_file)
-
-    with open(html_file, 'a') as f:
-        f.write(entry.create_html())
+    _write_single_entry(filename + '.md', 'CREATE_MARKDOWN', entry.create_markdown)
+    _write_single_entry(filename + '.html', 'CREATE_HTML', entry.create_html)

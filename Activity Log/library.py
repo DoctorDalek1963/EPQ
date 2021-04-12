@@ -11,19 +11,19 @@ Classes:
         A simple exception if the file being written to doesn't have the preamble TopText.
 
 Functions:
-    ordinal_day(date_time: datetime.datetime) -> str:
+    ordinal_day(date_time: datetime) -> str:
         Takes a datetime object and returns an ordinal day ('23rd' or '12th', for example) as a string.
 
     get_filename_no_extension() -> str:
         Get the FILENAME value from .env, make sure it's valid, and return it with no extension.
 
-    check_top_text(filename: str):
+    check_top_text(filename: str) -> None:
         Check if the file given by the filename argument has TopText.
 
-    write_top_text(filename: str):
+    write_top_text(filename: str) -> None:
         Write TopText given by the variables in .env to the file given by the filename argument. WARNING: This will erase all other data in the file.
 
-    write_entry(entry_text: str):
+    write_entry(entry_text: str) -> None:
         Take some body text for an entry and write it to the file specified by the FILENAME value in `.env`. By default it's 'Activity Log'.
 
 """
@@ -256,7 +256,7 @@ def get_filename_no_extension() -> str:
     return filename
 
 
-def check_top_text(filename: str):
+def check_top_text(filename: str) -> None:
     """Check if the file given by the filename argument has TopText.
 
     If the file doesn't have TopText, raise NoTopTextError.
@@ -274,7 +274,7 @@ def check_top_text(filename: str):
             raise NoTopTextError(filename + ' has no top text')
 
 
-def write_top_text(filename: str):
+def write_top_text(filename: str) -> None:
     """Write TopText given by the variables in .env to the file given by the filename argument. WARNING: This will erase all other data in the file.
 
     This function only accepts .md or .html files and writes the corresponding format of TopText to the given file. If the file is not .md or .html, the function will do nothing.
@@ -308,7 +308,7 @@ def _write_single_entry(filename: str, config_key: str, method) -> None:
         f.write(method())
 
 
-def write_entry(entry_text: str):
+def write_entry(entry_text: str) -> None:
     """Take some body text for an entry and write it the the file specified by the FILENAME value in `.env`. By default it's 'Activity Log'."""
     entry = Entry(entry_text)
 

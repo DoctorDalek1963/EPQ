@@ -3,7 +3,7 @@
 """This module compiles the Activity Logger in GUI or CLI format. GUI by default.
 
 Functions:
-    compile_logger(gui=True):
+    compile_logger(gui=True) -> None:
         Compile the Activity Logger according to the truthiness of the gui keyword argument. It's true by default.
 
 """
@@ -45,7 +45,7 @@ If you're on MacOS or Linux, you need to run the GUI on the command line. First 
 '''
 
 
-def compile_logger(gui=True):
+def compile_logger(gui=True) -> None:
     """Compile the Activity Logger using pyinstaller.
 
     Keyword arguments:

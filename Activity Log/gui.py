@@ -9,7 +9,7 @@ Classes:
         You have to create an instance (no arguments taken) and then call show() on it to show the window.
 
 Functions:
-    show_window():
+    show_window() -> None:
         Create an instance of the GUI window and show it. Takes no arguments.
 
 """
@@ -105,7 +105,7 @@ class ActivityLoggerGUI(QMainWindow):
         self._central_widget.setLayout(self._vbox)
         self.setCentralWidget(self._central_widget)
 
-    def _arrange_widgets(self):
+    def _arrange_widgets(self) -> None:
         """Arrange the attributes created by __init__() nicely."""
         self._vbox.addWidget(self._info)
         self._vbox.addWidget(self._link)
@@ -122,20 +122,20 @@ class ActivityLoggerGUI(QMainWindow):
         # The last item in the vbox is a hbox, so the final row can have two items side-by-side
         self._vbox.addLayout(self._hbox)
 
-    def _write_entry(self):
+    def _write_entry(self) -> None:
         """Write the contents of the text box to the HTML and markdown files for the Activity Log."""
         self._entry_text = self._text_box.toPlainText()
         library.write_entry(self._entry_text)
         self._text_box.setText('')
         self._open_html_button.setEnabled(True)  # Enable the button because now the file definitely exists
 
-    def _close_properly(self):
+    def _close_properly(self) -> None:
         """Set the _exists boolean to false to end the thread and then close the window."""
         self._exists = False
         self.close()
 
 
-def show_window():
+def show_window() -> None:
     """Create an instance of ActivityLoggerGUI and show it. Terminate the program when the user exits the window."""
     app = QApplication(sys.argv)
     window = ActivityLoggerGUI()

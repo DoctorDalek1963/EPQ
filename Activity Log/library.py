@@ -296,7 +296,7 @@ def _write_single_entry(filename: str, config_key: str, text: str) -> None:
 
     This function should never be called by the user. It is only for use in other library functions.
     """
-    if config(config_key).lower() == 'false':
+    if config(config_key, default='True').lower() == 'false':
         return  # Don't write to this file
 
     try:

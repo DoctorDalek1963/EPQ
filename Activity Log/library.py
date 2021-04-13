@@ -291,7 +291,7 @@ def write_top_text(filename: str) -> None:
             f.write(top_text.create_html())
 
 
-def _write_single_entry(filename: str, config_key: str, method) -> None:
+def _write_single_entry(filename: str, config_key: str, text: str) -> None:
     """Write an entry to a file. Only do markdown *or* HTML.
 
     This function should never be called by the user. It is only for use in other library functions.
@@ -305,7 +305,7 @@ def _write_single_entry(filename: str, config_key: str, method) -> None:
         write_top_text(filename)
 
     with open(filename, 'a') as f:
-        f.write(method())
+        f.write(text)
 
 
 def write_entry(entry_text: str) -> None:
@@ -314,5 +314,5 @@ def write_entry(entry_text: str) -> None:
 
     filename = get_filename_no_extension()
 
-    _write_single_entry(filename + '.md', 'CREATE_MARKDOWN', entry.create_markdown)
-    _write_single_entry(filename + '.html', 'CREATE_HTML', entry.create_html)
+    _write_single_entry(filename + '.md', 'CREATE_MARKDOWN', entry.create_markdown())
+    _write_single_entry(filename + '.html', 'CREATE_HTML', entry.create_html())

@@ -11,6 +11,13 @@ UNIT_NUMBER=&lt;your unit number&gt;
 TEACHER_ASSESSOR=&lt;your teacher assessor&gt;
 PROPOSED_PROJECT_TITLE=&lt;your proposed project title&gt;
 <br># This is "Activity Log" if not set
-FILENAME=</pre>
+FILENAME=
+<br># I'd recommend keeping these both True, but if you
+\# don't care about the markdown version, you can
+\# set that to False
+\# If you set the HTML version to False, then the
+\# "Open HTML file" button on the GUI won't work
+CREATE_HTML=True
+CREATE_MARKDOWN=True</pre>
 
 If any of the values have spaces, they should be in double quotes like `"John Doe"`.

@@ -19,6 +19,27 @@ def dict_to_env(dictionary: dict) -> str:
     return '\n'.join(lines)
 
 
+class TestingEnv:
+    """A class to be used as a context manager to allow the use of custom .env files in tests."""
+
+    def __init__(self, dictionary: dict):
+        self.__dictionary = dictionary
+        self.filename = self.__dictionary['FILENAME']
+
+    def __enter__(self):
+        with open('.env', 'r') as f:
+            self.old_env = f.read()
+
+        with open('.env', 'w') as f:
+            f.write(dict_to_env(self.__dictionary))
+
+        return self.filename
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        with open('.env', 'w') as f:
+            f.write(self.old_env)
+
+
 class TestActivityLogger(unittest.TestCase):
     """A class to hold methods for testing the Activity Logger."""
 
@@ -36,19 +57,6 @@ class TestActivityLogger(unittest.TestCase):
         'CREATE_HTML': True,
         'CREATE_MARKDOWN': True
     }
-
-    def setUp(self) -> None:
-        # Keep the original .env file
-        # Reading and writing this file for every test is probably an *AWFUL* way to do this
-        with open('.env', 'r') as f:
-            self.old_env = f.read()
-
-        with open('.env', 'w') as f:
-            f.write(dict_to_env(TestActivityLogger.NEW_ENV_DICT))
-
-    def tearDown(self) -> None:
-        with open('.env', 'w') as f:
-            f.write(self.old_env)
 
     def test_ordinal_day(self) -> None:
         """Test the simple ordinal_day() function."""

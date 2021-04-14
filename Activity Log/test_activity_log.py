@@ -90,6 +90,7 @@ class TestActivityLogger(unittest.TestCase):
         self.assertIn('Here is some text. This bit is **bold**. This is *italic*. <3', entry_markdown)
 
     def test_top_text(self):
+        """Test for TopText creation."""
         expected_html = '''<body>
 <div class="top-text">
 <h1>Activity Log</h1>

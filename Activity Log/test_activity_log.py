@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 """A simple unittest for testing the Activity Logger."""
 
+import os
 import unittest
 from datetime import datetime
 
@@ -87,6 +88,86 @@ class TestActivityLogger(unittest.TestCase):
 
         self.assertIn('This is a basic entry.', entry_markdown)
         self.assertIn('Here is some text. This bit is **bold**. This is *italic*. <3', entry_markdown)
+
+    def test_top_text(self):
+        expected_html = '''<body>
+<div class="top-text">
+<h1>Activity Log</h1>
+<table>
+<tbody>
+<tr>
+    <td>Learner Name:</td>
+    <td>Test Name</td>
+</tr>
+<tr>
+    <td>Learner Number:</td>
+    <td>123456</td>
+</tr>
+<tr>
+    <td>Centre Name:</td>
+    <td>Test Centre</td>
+</tr>
+<tr>
+    <td>Centre Number:</td>
+    <td>789012</td>
+</tr>
+<tr>
+    <td>Unit Name:</td>
+    <td>Test Unit Name</td>
+</tr>
+<tr>
+    <td>Unit Number:</td>
+    <td>345678</td>
+</tr>
+<tr>
+    <td>Teacher Assessor:</td>
+    <td>Test Teacher</td>
+</tr>
+<tr>
+    <td>Proposed project title:</td>
+    <td>Test Title</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<hr>
+
+<div class="entry-list">'''
+
+        expected_markdown = '''# Activity Log
+
+Learner Name: Test Name
+
+Learner Number: 123456
+
+Centre Name: Test Centre
+
+Centre Number: 789012
+
+Unit Name: Test Unit Name
+
+Unit Number: 345678
+
+Teacher Assessor: Test Teacher
+
+Proposed project title: Test Title
+
+---
+'''
+
+        with TestingEnv(TestActivityLogger.NEW_ENV_DICT) as filename:
+            library.write_top_text(filename + '.html')
+            library.write_top_text(filename + '.md')
+
+            with open(filename + '.html', 'r') as f:
+                self.assertIn(expected_html, f.read())
+
+            with open(filename + '.md', 'r') as f:
+                self.assertIn(expected_markdown, f.read())
+
+            os.remove(filename + '.html')
+            os.remove(filename + '.md')
 
 
 if __name__ == '__main__':

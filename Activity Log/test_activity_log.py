@@ -78,16 +78,15 @@ class TestActivityLogger(unittest.TestCase):
 
     def test_entry(self) -> None:
         """Test a basic entry."""
-        entry = library.Entry('This is a basic entry.\n\nHere is some text. This bit is **bold**. This is *italic*. <3')
+        body_text = 'This is a basic entry.\n\nHere is some text. This bit is **bold**. This is *italic*. <3'
+        entry = library.Entry(body_text)
 
         entry_html = entry.create_html()
         entry_markdown = entry.create_markdown()
 
-        self.assertIn('This is a basic entry.', entry_html)
-        self.assertIn('Here is some text. This bit is <strong>bold</strong>. This is <em>italic</em>. &lt;3', entry_html)
-
-        self.assertIn('This is a basic entry.', entry_markdown)
-        self.assertIn('Here is some text. This bit is **bold**. This is *italic*. <3', entry_markdown)
+        self.assertIn('<p>This is a basic entry.</p>\n<p>Here is some text. '
+                      'This bit is <strong>bold</strong>. This is <em>italic</em>. &lt;3</p>', entry_html)
+        self.assertIn(body_text, entry_markdown)
 
     def test_top_text(self):
         """Test for TopText creation."""

@@ -47,13 +47,13 @@ class TestActivityLogger(unittest.TestCase):
     NEW_ENV_DICT = {
         'LEARNER_NAME': 'Test Name',
         'LEARNER_NUMBER': 123456,
-        'CENTRE_NAME': 'Test School',
+        'CENTRE_NAME': 'Test Centre',
         'CENTRE_NUMBER': 789012,
         'UNIT_NAME': 'Test Unit Name',
         'UNIT_NUMBER': 345678,
         'TEACHER_ASSESSOR': 'Test Teacher',
         'PROPOSED_PROJECT_TITLE': 'Test Title',
-        'FILENAME': 'Activity Log',
+        'FILENAME': 'TEST_ACTIVITY_LOG',
         'CREATE_HTML': True,
         'CREATE_MARKDOWN': True
     }

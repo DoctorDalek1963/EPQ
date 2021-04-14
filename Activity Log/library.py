@@ -91,9 +91,9 @@ class Entry:
         # markdown.markdown converts markdown formatting into HTML
         return f'''<div class="entry">
     <h3 class="date-and-time">{self.date_and_time}</h3>
-    <p class="body-text">
+    <div class="body-text">
         {markdown.markdown(self.body_text.replace('<', '&lt;').replace('>', '&gt;'))}
-    </p>
+    </div>
 </div>\n\n'''
 
     def create_markdown(self) -> str:

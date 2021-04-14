@@ -1,0 +1,71 @@
+#!/usr/bin/env python
+"""A simple unittest for testing the Activity Logger."""
+
+import unittest
+from datetime import datetime
+
+import library
+
+
+def dict_to_env(dictionary: dict) -> str:
+    """Convert a dictionary of values to a string to write to the .env file."""
+    lines = []
+
+    for key, value in dictionary.items():
+        if ' ' in str(value):  # If the value has spaces
+            value = '"' + value + '"'
+        lines.append(str(key) + '=' + str(value))
+
+    return '\n'.join(lines)
+
+
+class TestActivityLogger(unittest.TestCase):
+    """A class to hold methods for testing the Activity Logger."""
+
+    # This dictionary will be turned into a .env file to test things
+    NEW_ENV_DICT = {
+        'LEARNER_NAME': 'Test Name',
+        'LEARNER_NUMBER': 123456,
+        'CENTRE_NAME': 'Test School',
+        'CENTRE_NUMBER': 789012,
+        'UNIT_NAME': 'Test Unit Name',
+        'UNIT_NUMBER': 345678,
+        'TEACHER_ASSESSOR': 'Test Teacher',
+        'PROPOSED_PROJECT_TITLE': 'Test Title',
+        'FILENAME': 'Activity Log',
+        'CREATE_HTML': True,
+        'CREATE_MARKDOWN': True
+    }
+
+    def setUp(self) -> None:
+        # Keep the original .env file
+        # Reading and writing this file for every test is probably an *AWFUL* way to do this
+        with open('.env', 'r') as f:
+            self.old_env = f.read()
+
+        with open('.env', 'w') as f:
+            f.write(dict_to_env(TestActivityLogger.NEW_ENV_DICT))
+
+    def tearDown(self) -> None:
+        with open('.env', 'w') as f:
+            f.write(self.old_env)
+
+    def test_ordinal_day(self) -> None:
+        """Test the simple ordinal_day() function."""
+        expected_values = [
+            '1st', '2nd', '3rd', '4th', '5th', '6th', '7th', '8th', '9th', '10th',
+            '11th', '12th', '13th', '14th', '15th', '16th', '17th', '18th', '19th', '20th',
+            '21st', '22nd', '23rd', '24th', '25th', '26th', '27th', '28th', '29th', '30th',
+            '31st'
+        ]
+
+        datetime_objects = []
+        for i in range(1, 32):
+            datetime_objects.append(datetime.strptime(str(i), '%d'))
+
+        returned_values = list(map(library.ordinal_day, datetime_objects))
+        self.assertEqual(expected_values, returned_values)
+
+
+if __name__ == '__main__':
+    unittest.main()

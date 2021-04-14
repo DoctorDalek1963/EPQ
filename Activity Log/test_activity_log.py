@@ -64,7 +64,21 @@ class TestActivityLogger(unittest.TestCase):
             datetime_objects.append(datetime.strptime(str(i), '%d'))
 
         returned_values = list(map(library.ordinal_day, datetime_objects))
+
         self.assertEqual(expected_values, returned_values)
+
+    def test_entry(self) -> None:
+        """Test a basic entry."""
+        entry = library.Entry('This is a basic entry.\n\nHere is some text. This bit is **bold**. This is *italic*. <3')
+
+        entry_html = entry.create_html()
+        entry_markdown = entry.create_markdown()
+
+        self.assertIn('This is a basic entry.', entry_html)
+        self.assertIn('Here is some text. This bit is <strong>bold</strong>. This is <em>italic</em>. &lt;3', entry_html)
+
+        self.assertIn('This is a basic entry.', entry_markdown)
+        self.assertIn('Here is some text. This bit is **bold**. This is *italic*. <3', entry_markdown)
 
 
 if __name__ == '__main__':

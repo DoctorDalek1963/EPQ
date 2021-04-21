@@ -13,9 +13,12 @@ def dict_to_env(dictionary: dict) -> str:
     lines = []
 
     for key, value in dictionary.items():
-        if ' ' in str(value):  # If the value has spaces
+        value = str(value)
+
+        if ' ' in value or os.sep in value:  # If the value has spaces or a path separator
             value = '"' + value + '"'
-        lines.append(str(key) + '=' + str(value))
+
+        lines.append(str(key).upper() + '=' + value)
 
     return '\n'.join(lines)
 
@@ -26,6 +29,7 @@ class TestingEnv:
     def __init__(self, dictionary: dict):
         self.__dictionary = dictionary
         self.filename = self.__dictionary['FILENAME']
+        self.old_env: str  # Declare this as an attribute to be assigned a value later
 
     def __enter__(self):
         with open('.env', 'r') as f:
@@ -88,7 +92,7 @@ class TestActivityLogger(unittest.TestCase):
                       'This bit is <strong>bold</strong>. This is <em>italic</em>. &lt;3</p>', entry_html)
         self.assertIn(body_text, entry_markdown)
 
-    def test_top_text(self):
+    def test_top_text(self) -> None:
         """Test for TopText creation."""
         expected_html = '''<body>
 <div class="top-text">
